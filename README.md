@@ -1,6 +1,6 @@
 # JavaScript_Lessons
 Learning JavaScript and Practice
 
-## Plan
-[JavaScript Basic](Course_Overview/README.md) <br> 
-[JavaScript Program Structure](Program_Structure/README.md)
+### <i>Plan</i>
+[JavaScript Basic](/Course_Overview/README.MD) <br> 
+[JavaScript Program Structure](/Program_Structure/README.MD)
