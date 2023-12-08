@@ -1,8 +1,8 @@
 [Go to ToC](../README.md)
 
-# Структура программы
+# Program Structure
 
-На этом уроке мы начнем делать то, что на самом деле можно назвать *программированием*. Мы расширим наше владение языком JavaScript за пределы существительных и фрагментов предложений, которые мы видели до сих пор, до такой степени, что мы сможем выражать осмысленную прозу.
+In this lesson, we will start to do things that can actually be called *programming*. We will expand our command of the JavaScript language beyond the nouns and sentence fragments we’ve seen so far, to the point where we can express meaningful prose.
 
 ## ToC
 * [Expressions and statements](#expressions-and-statements)
@@ -26,38 +26,38 @@
 * [Exercises](#exercises)
 
 
-## Выражения и утверждения
+## Expressions and statements
 
-Фрагмент кода, который создает значение, называется **выражением**. Каждое значение, написанное буквально (например, 22 или «психоанализ»), является выражением. Выражение в круглых скобках также является выражением, как и бинарный оператор, применяемый к двум выражениям, или унарный оператор, применяемый к одному.
+A fragment of code that produces a value is called an **expression**. Every value that is written literally (such as 22 or "psychoanalysis") is an expression. An expression between parentheses is also an expression, as is a binary operator applied to two expressions or a unary operator applied to one.  
 
-Выражения могут содержать другие выражения аналогично тому, как вложены подпредложения в человеческих языках: подпредложение может содержать свои собственные подпредложения и так далее. Это позволяет нам строить выражения, описывающие сколь угодно сложные вычисления.
+Expressions can contain other expressions in a way similar to how subsentences in human languages are nested—a subsentence can contain its own subsentences, and so on. This allows us to build expressions that describe arbitrarily complex computations.  
 
-Если выражение соответствует фрагменту предложения, оператор JavaScript соответствует полному предложению. **Программа** — это список операторов.
+If an expression corresponds to a sentence fragment, a JavaScript statement corresponds to a full sentence. A **program** is a list of statements.  
 
-Самый простой вид оператора — это выражение с точкой с запятой после него. Это программа:  
+The simplest kind of statement is an expression with a semicolon after it. This is a program:  
 
 ```javascript
 1;
 !false;
 ```  
 
-:warning: `;` — точка с запятой в JavaScript необязательна, но лучше всего ее включать.
+:warning: `;` - semicolon in javascript is optional, but it's best practice to include it.
 
-Приведенный выше код ничего не делает, кроме возврата `1` и `true` и немедленного их выбрасывания.
+The above code doesn't do much except return `1` and `true` and immediately throws it out.
 
 [🔝](#toc)  
   
 
-## Привязки
+## Bindings
 
-Чтобы перехватывать и удерживать значения, вместо того, чтобы выбрасывать их, JavaScript предоставляет вещь, называемую **привязкой** или **переменной**:
+To catch and hold values, instead of throwing out the value, JavaScript provides a thing called a **binding** or **variable**:
 
 ```javascript
 let caught = 5 * 5;
 ```
-Это второй вид заявления. Специальное слово (ключевое слово) `let` указывает, что это предложение будет определять привязку. За ним следует имя привязки и, если мы хотим сразу присвоить ей значение, оператор **=** и выражение.
+This is a second kind of statement. The special word (keyword) `let` indicates that this sentence is going to define a binding. It is followed by the name of the binding and, if we want to immediately give it a value, by an **=** operator and an expression.  
 
-После определения привязки ее имя можно использовать в качестве выражения. Значением такого выражения является значение, которое в данный момент содержит привязка. Вот пример:  
+After a binding has been defined, its name can be used as an expression. The value of such an expression is the value the binding currently holds. Here’s an example:  
 
 ```javascript
 let ten = 10;
@@ -65,7 +65,7 @@ console.log(ten * ten);
 // → 100
 ```  
 
-Когда привязка указывает на значение, это не означает, что она привязана к этому значению навсегда. Оператор = можно использовать в любое время для существующих привязок, чтобы отключить их от текущего значения и указать на новое.
+When a binding points at a value, that does not mean it is tied to that value forever. The = operator can be used at any time on existing bindings to disconnect them from their current value and have them point to a new one.
 
 ```javascript
 
@@ -78,11 +78,12 @@ console.log(mood);
 
 ```
 
-:exclamation: Важно визуализировать переменные и их значения в терминах «переменная, указывающая на значение», а не «переменная содержит значение». Мы могли бы подумать, что когда мы изменяем значение конкретной переменной, она просто заменяет значение, тогда как физически старое значение все еще существует, но переменная теперь *указывает* на новое значение.
+:exclamation: It's important to visualize variables and their values in terms of `variable pointing to a value` instead of `variable contains a value`. We might think when we change the value of a particular variable, it just replaces the value, where in physically, the old value is still there, but variable now *points* to a new value.
 
-Программа может получить доступ только к тем значениям, на которые она еще имеет ссылку. Если ваша переменная ни на что не указывает, ее значение будет «неопределенным».
+A program can access only the values that it still has a reference to. If your variable doesn't point to anything, it's value will be `undefined`.
 
-Один оператор let может определять несколько привязок. Определения должны быть разделены запятыми.
+A single let statement may define multiple bindings. The definitions must be separated by commas.  
+
 
 ```javascript
 
@@ -92,7 +93,7 @@ console.log(one + two);
 
 ```
 
-Слова```var``` и const также можно использовать для создания привязок, аналогично let.
+The words ```var``` and const can also be used to create bindings, in a way similar to let.
 
 ```javascript
 var name = "Ayda";
@@ -101,17 +102,17 @@ console.log(greeting + name);
 // → Hello Ayda
 ```
 
-:exclamation: Первое,```var``` (сокращение от «переменная») — это способ объявления привязок в JavaScript до 2015 года.
+:exclamation: The first, ```var``` (short for “variable”), is the way bindings were declared in pre-2015 JavaScript.
 
-Слово `const` означает константу. Он определяет постоянную привязку, которая указывает на одно и то же значение до тех пор, пока оно существует. Это полезно для привязок, которые присваивают значению имя, чтобы вы могли легко обратиться к нему позже.
+The word `const` stands for constant. It defines a constant binding, which points at the same value for as long as it lives. This is useful for bindings that give a name to a value so that you can easily refer to it later.
 
 [🔝](#toc)  
   
-## Привязка имен
+## Binding Names
 
-Именами привязки могут быть любые слова. Цифры могут быть частью имен привязок — например, «catch22» — допустимое имя, но имя не должно начинаться с цифры. Имя привязки может включать знаки доллара (`$`) или символы подчеркивания (`_`), но не должно содержать других знаков препинания или специальных символов.
+Binding names can be any word. Digits can be part of binding names—`catch22` is a valid name, for example—but the name must not start with a digit. A binding name may include dollar signs (`$`) or underscores (`_`) but no other punctuation or special characters.
 
-Слова со специальным значением, такие как `let`, являются ключевыми словами, и их нельзя использовать в качестве привязывающих имен. Существует также ряд слов, «*зарезервированных для использования*» в будущих версиях JavaScript, которые также нельзя использовать в качестве имен привязок. Полный список ключевых слов и зарезервированных слов довольно длинный.
+Words with a special meaning, such as `let`, are keywords, and they may not be used as binding names. There are also a number of words that are “*reserved for use*” in future versions of JavaScript, which also can’t be used as binding names. The full list of keywords and reserved words is rather long.   
 
 ```javascript
 break case catch class const continue debugger default
@@ -121,24 +122,24 @@ new package private protected public return static super
 switch this throw true try typeof var void while with yield
 ```
 
-Не беспокойтесь о запоминании этого списка. Если при создании привязки возникает непредвиденная синтаксическая ошибка, проверьте, не пытаетесь ли вы определить зарезервированное слово.
+Don’t worry about memorizing this list. When creating a binding produces an unexpected syntax error, see whether you’re trying to define a reserved word.
 
 
   
 [🔝](#toc)  
 
-### Окружающая среда
+### The Environment
 
-Коллекция привязок и их значений, существующих в данный момент времени, называется **средой**. Когда программа запускается, эта среда не пуста. Он всегда содержит привязки, являющиеся частью языкового стандарта, и в большинстве случаев также имеет привязки, обеспечивающие способы взаимодействия с окружающей системой. Например, в браузере есть функции для взаимодействия с загруженным в данный момент веб-сайтом и чтения ввода с мыши и клавиатуры.
+The collection of bindings and their values that exist at a given time is called the **environment**. When a program starts up, this environment is not empty. It always contains bindings that are part of the language standard, and most of the time, it also has bindings that provide ways to interact with the surrounding system. For example, in a browser, there are functions to interact with the currently loaded website and to read mouse and keyboard input.
 
   
 [🔝](#toc)  
 
-### Функции
+### Functions
 
-* Многие значения, представленные в среде по умолчанию, имеют тип **функция**.
+* A lot of the values provided in the default environment have the type **function**.
 
-* Функция — это часть программы, заключенная в значение. Такие значения можно применять для запуска завернутой программы. Например, в среде браузера приглашение привязки содержит функцию, которая отображает небольшое диалоговое окно с запросом ввода данных пользователем. Он используется следующим образом:
+* A function is a piece of program wrapped in a value. Such values can be applied in order to run the wrapped program. For example, in a browser environment, the binding prompt holds a function that shows a little dialog box asking for user input. It is used like this:
 
 ```javascript
 
@@ -146,19 +147,20 @@ prompt("Enter passcode");
 
 ```
 
-:warning: Выполнение функции называется **вызовом**, **вызовом** или **применением** ее.
+:warning: Executing a function is called **invoking**, **calling**, or **applying** it.
 
-* В этом примере функция приглашения использует указанную нами строку в качестве текста для отображения в диалоговом окне. Значения, передаваемые функциям, называются **аргументами**. Разным функциям может потребоваться разное количество или разные типы аргументов.
+* In the example, the prompt function uses the string that we give it as the text to show in the dialog box. Values given to functions are called **arguments**. Different functions might need a different number or different types of arguments.
+
   
 [🔝](#toc)  
 
-### Функция журнала консоли
+### Console Log function
 
-Если вы заметили в примерах, мы часто используем функцию console.log().
+If you've noticed in the examples, we're using `console.log()` function a lot. 
 
-* Большинство систем JavaScript (включая все современные веб-браузеры и Node.js) предоставляют функцию console.log, которая записывает свои аргументы в какое-либо устройство вывода текста.
+* Most JavaScript systems (including all modern web browsers and Node.js) provide a console.log function that writes out its arguments to some text output device.
 
-* В браузерах выходные данные попадают в консоль JavaScript. (кнопка `F12` в Windows)
+* In browsers, the output lands in the JavaScript console. (`F12` button on windows)
 
 ```javascript
 
@@ -167,16 +169,16 @@ console.log("the value of x is", x);
 
 ```
 
-:warning: Хотя имена привязок не могут содержать символы точки, в console.log она есть. Это связано с тем, что console.log — это не простая привязка. На самом деле это выражение, которое извлекает свойство журнала из значения, хранящегося в привязке консоли.
+:warning: Though binding names cannot contain period characters, console.log does have one. This is because console.log isn’t a simple binding. It is actually an expression that retrieves the log property from the value held by the console binding.
  
 
 
 [🔝](#toc)    
   
   
-### Возвращаемые значения
+### Return Values
 
-Отображение диалогового окна или вывод текста на экран — это **побочный эффект**. Многие функции полезны из-за побочных эффектов, которые они производят. Функции также могут создавать значения, и в этом случае им не обязательно иметь побочный эффект, чтобы быть полезными. Например, функция Math.max принимает любое количество числовых аргументов и возвращает наибольшее:
+Showing a dialog box or writing text to the screen is a **side effect**. A lot of functions are useful because of the side effects they produce. Functions may also produce values, in which case they don’t need to have a side effect to be useful. For example, the function Math.max takes any amount of number arguments and gives back the greatest: 
 
 ```javascript
 
@@ -184,35 +186,35 @@ console.log(Math.max(2, 4));
 // → 4
 
 ```
-* Когда функция выдает значение, говорят, что она **возвращает** это значение.
+* When a function produces a value, it is said to **return** that value
 
-:warning: на следующем уроке мы увидим, как создавать собственные функции.
+:warning: we'll see how to create our own functions in the next lesson
 
   
 [🔝](#toc)  
 
   
   
-## Поток управления
+## Control Flow
 
-* Если ваша программа содержит более одного оператора, они выполняются, как если бы они были рассказом, сверху вниз. В этом примере программы есть два оператора. Первый запрашивает у пользователя число, а второй, который выполняется после первого, показывает квадрат этого числа.
+* When your program contains more than one statement, the statements are executed as if they are a story, from top to bottom. This example program has two statements. The first one asks the user for a number, and the second, which is executed after the first, shows the square of that number.
 
 ```javascript
 let x = Number(prompt("Pick a number"));
 console.log("Your number is the square root of " + x * x);
 ```
-Функция Number преобразует значение в число. Нам нужно это преобразование, потому что результатом запроса является строковое значение, а нам нужно число. Существуют аналогичные функции, называемые String и Boolean, которые преобразуют значения в эти типы.
+The function Number converts a value to a number. We need that conversion because the result of prompt is a string value, and we want a number. There are similar functions called String and Boolean that convert values to those types.  
 
 
 
 [🔝](#toc)  
 
     
-## Условное выполнение
+## Conditional Execution
 
-* Например, мы можем захотеть создать разветвляющуюся дорогу, по которой программа выберет подходящую ветку в зависимости от текущей ситуации. Это называется условным исполнением.
+* We may, for example, want to create a branching road, where the program takes the proper branch based on the situation at hand. This is called conditional execution. 
 
-* Условное выполнение создается с помощью ключевого слова if в JavaScript.
+* Conditional execution is created with the `if` keyword in JavaScript. 
 
 ```javascripot
 let x = Number(prompt("Pick a number"));
@@ -221,15 +223,15 @@ if (!Number.isNaN(x)) {
 }
 ```
 
-* Ключевое слово `if` выполняет или пропускает оператор в зависимости от значения логического выражения. Решающее выражение записывается после ключевого слова в круглых скобках, за которым следует оператор, который необходимо выполнить.
+* The `if` keyword executes or skips a statement depending on the value of a Boolean expression. The deciding expression is written after the keyword, between parentheses, followed by the statement to execute.
 
-* Функция Number.isNaN — это стандартная функция JavaScript, которая возвращает значение true, только если переданный ей аргумент равен NaN. Функция Number возвращает NaN, когда вы передаете ей строку, которая не представляет допустимое число. Таким образом, условие переводится как «если x не является числом, сделайте это».
+* The Number.isNaN function is a standard JavaScript function that returns true only if the argument it is given is NaN. The Number function happens to return NaN when you give it a string that doesn’t represent a valid number. Thus, the condition translates to `unless x is not-a-number, do this`.
 
-* В этом примере оператор после `if` заключен в фигурные скобки (`{` и `}`. Фигурные скобки можно использовать для группировки любого количества операторов в один оператор, называемый **блоком**.
+* The statement after the `if` is wrapped in braces (`{` and `}`) in this example. The braces can be used to group any number of statements into a single statement, called a **block**. 
 
-:warning: Вы можете пропустить `{}`, если имеется только один оператор, однако опускать их не рекомендуется.
+:warning: You can skip `{}` if the there's only one statement, however is not the best practice to omit them.
 
-* Часто у вас будет не только код, который выполняется, когда условие выполняется, но и код, который обрабатывает другой случай. Этот альтернативный путь обозначен второй стрелкой на диаграмме. Вы можете использовать ключевое слово **`else`** вместе с if, чтобы создать два отдельных альтернативных пути выполнения.
+* You often won’t just have code that executes when a condition holds true, but also code that handles the other case. This alternate path is represented by the second arrow in the diagram. You can use the **`else`** keyword, together with if, to create two separate, alternative execution paths.
 
 ```javascript
 let x = Number(prompt("Pick a number"));
@@ -240,7 +242,7 @@ if (!Number.isNaN(x)) {
   console.log("Hey. Why didn't you give me a number?");
 }
 ```
-* Если у вас есть более двух путей на выбор, вы можете «связать» несколько пар if/else вместе с **`else if`**.
+* If you have more than two paths to choose from, you can “chain” multiple if/else pairs together with **`else if`**.
 
 ```javascript
 
@@ -259,9 +261,9 @@ if (num < 10) {
 [🔝](#toc)  
 
     
-## Циклы while и do
+## While And Do Loops
 
-Рассмотрим программу, которая выводит все четные числа от 0 до 12. Один из способов записать это так:
+Consider a program that outputs all even numbers from 0 to 12. One way to write this is as follows:
 
 ```javascript
 console.log(0);
@@ -273,7 +275,7 @@ console.log(10);
 console.log(12);
 ```
 
-Что, если мы хотим до 1000? Делать это по одному будет непрактично. Нам нужен способ запускать фрагмент кода несколько раз. Эта форма потока управления называется **циклом**.
+What if we want until 1000? It won't be practical to do it one by one. What we need is a way to run a piece of code multiple times. This form of control flow is called a **loop**.
 
 ```javascript
 let number = 0;
@@ -286,11 +288,11 @@ while (number <= 12) {
 //   … etcetera
 ```
 
-* Оператор, начинающийся с ключевого слова **` while `**, создает цикл. За словом while следует выражение в круглых скобках, а затем оператор, очень похожий на `if`.
+* A statement starting with the keyword **`while`** creates a loop. The word while is followed by an expression in parentheses and then a statement, much like `if`. 
 
-* Цикл продолжает вводить этот оператор до тех пор, пока выражение возвращает значение, дающее `true` при преобразовании в логическое значение.
+* The loop keeps entering that statement as long as the expression produces a value that gives `true` when converted to Boolean.
 
-* Имея это в виду, давайте посмотрим на другой пример, который вычисляет 2^10:
+* With this in mind, let's look at another example that calculates 2^10:
 
 ```javascript
 let result = 1;
@@ -302,9 +304,9 @@ while (counter < 10) {
 console.log(result);
 // → 1024
 ```
-:warning: СОВЕТ: привыкайте считать от 0 :)
+:warning: TIP: get used to count from 0 :)
 
-* while **`do`** — это структура управления, аналогичная циклу while. Он отличается только в одном: цикл do всегда выполняет свое тело хотя бы один раз и начинает проверять, следует ли ему остановиться, только после этого первого выполнения. Чтобы отразить это, тест появляется после тела цикла.
+* A **`do`** loop is a control structure similar to a `while` loop. It differs only on one point: a do loop always executes its body at least once, and it starts testing whether it should stop only after that first execution. To reflect this, the test appears after the body of the loop.
 
 ```javascript
 let yourName;
@@ -313,16 +315,16 @@ do {
 } while (!yourName);
 console.log(yourName);
 ```
-* Эта программа заставит вас ввести имя. Он будет спрашивать снова и снова, пока не получит что-то, что не является пустой строкой. Применение оператора `!` преобразует значение в логический тип перед его отрицанием, а все строки, кроме `""`, преобразуются в true. Это означает, что цикл продолжает выполняться до тех пор, пока вы не укажете непустое имя.
+* This program will force you to enter a name. It will ask again and again until it gets something that is not an empty string. Applying the `!` operator will convert a value to Boolean type before negating it, and all strings except `""` convert to true. This means the loop continues going round until you provide a non-empty name.
 
 
   
 [🔝](#toc)  
 
     
-## Отступы
+## Indenting
 
-* Роль этого отступа внутри блоков — выделить структуру кода. В коде, где новые блоки открываются внутри других блоков, может быть трудно увидеть, где заканчивается один блок и начинается другой. При правильном отступе визуальная форма программы соответствует форме блоков внутри нее.
+* The role of this indentation inside blocks is to make the structure of the code stand out. In code where new blocks are opened inside other blocks, it can become hard to see where one block ends and another begins. With proper indentation, the visual shape of a program corresponds to the shape of the blocks inside it.
 
 ```javascript
 
@@ -340,11 +342,11 @@ if (false != true) {
 
 
     
-## Циклы для
+## For Loops
 
-* Многие циклы следуют шаблону, показанному в примерах while. Сначала создается привязка «счетчик» для отслеживания хода цикла. Затем следует цикл while, обычно с проверочным выражением, которое проверяет, достиг ли счетчик своего конечного значения. В конце тела цикла счетчик обновляется для отслеживания прогресса.
+* Many loops follow the pattern shown in the `while` examples. First a “counter” binding is created to track the progress of the loop. Then comes a while loop, usually with a test expression that checks whether the counter has reached its end value. At the end of the loop body, the counter is updated to track progress.
 
-* Поскольку этот шаблон настолько распространен, JavaScript и подобные языки предоставляют немного более короткую и более полную форму — цикл for.
+* Because this pattern is so common, JavaScript and similar languages provide a slightly shorter and more comprehensive form, the `for` loop.
 
 ```javascript
 for (let number = 0; number <= 12; number = number + 2) {
@@ -355,12 +357,12 @@ for (let number = 0; number <= 12; number = number + 2) {
 //   … etcetera
 ```
 
-:предупреждение: Круглые скобки после ключевого слова `for` должны содержать две точки с запятой.
-   1. Часть перед первой точкой с запятой **инициализирует** цикл, обычно путем определения привязки.
-   2. Вторая часть — это выражение, которое **проверяет**, нужно ли продолжать цикл.
-   3. Последняя часть **обновляет** состояние цикла после каждой итерации. В большинстве случаев это короче и понятнее, чем конструкция while.
+:warning: The parentheses after a `for` keyword must contain two semicolons. 
+  1. The part before the first semicolon **initializes** the loop, usually by defining a binding. 
+  2. The second part is the expression that **checks** whether the loop must continue. 
+  3. The final part **updates** the state of the loop after every iteration. In most cases, this is shorter and clearer than a while construct.
 
-* Вот код для поиска 2^10 с помощью цикла `for`.
+* Here's the code to find 2^10 with `for` loop
 
 ```javascript
 let result = 1;
@@ -374,9 +376,9 @@ console.log(result);
 [🔝](#toc)  
 
       
-## Выход из цикла
+## Breaking Out of a Loop
 
-* Если условие цикла выдает `false`, это не единственный способ завершения цикла. * * Существует специальный оператор **`break`**, который позволяет немедленно выйти из охватывающего цикла.
+* Having the looping condition produce `false` is not the only way a loop can finish. * * There is a special statement called **`break`** that has the effect of immediately jumping out of the enclosing loop.
 
 ```javascript
 for (let current = 20; ; current = current + 1) {
@@ -388,24 +390,24 @@ for (let current = 20; ; current = current + 1) {
 // → 21
 ```
 
-:предупреждение: Если вы удалите этот оператор прерывания или случайно напишете конечное условие, которое всегда возвращает true, ваша программа застрянет в **`бесконечном цикле`**. Программа, застрявшая в бесконечном цикле, никогда не завершит свою работу, что обычно плохо.
+:warning: If you were to remove that break statement or you accidentally write an end condition that always produces true, your program would get stuck in an **`infinite loop`**. A program stuck in an infinite loop will never finish running, which is usually a bad thing.
 
-* Ключевое слово `continue` похоже на ключевое слово Break, поскольку оно влияет на ход выполнения цикла. Оператор `continue` прерывает одну итерацию (в цикле), если возникает указанное условие, и переходит к следующей итерации цикла.
+* The `continue` keyword is similar to break, in that it influences the progress of a loop. The `continue` statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.
   
 [🔝](#toc)  
 
       
-## Краткое обновление привязок
+## Updating bindings succinctly
 
-* Особенно при выполнении цикла программе часто необходимо *обновить* привязку, чтобы сохранить значение, основанное на предыдущей привязке.value.
+* Especially when looping, a program often needs to *update* a binding to hold a value based on that binding’s previous value.
 
 ``` counter = counter + 1; ```
 
-JavaScript предоставляет для этого ярлык:
+JavaScript provides a shortcut for this:
 
 ``` counter += 1; ```
 
-Это позволяет нам еще немного сократить наш пример подсчета.
+This allows us to shorten our counting example a little more.
 
 ```javascript
 for (let number = 0; number <= 12; number += 2) {
@@ -413,16 +415,16 @@ for (let number = 0; number <= 12; number += 2) {
 }
 ```
 
-:exclamation: Для счетчика += 1 и счетчика -= 1 существуют еще более короткие эквиваленты: `counter++` и `counter--`.
+:exclamation: For counter += 1 and counter -= 1, there are even shorter equivalents: `counter++` and `counter--`.
 
 
   
 [🔝](#toc)  
 
       
-## Выключатель Switch
+## Switch
 
-Нередко код выглядит так:
+It is not uncommon for code to look like this:
 ```javascript
 if (x == "value1") action1();
 else if (x == "value2") action2();
@@ -454,9 +456,9 @@ switch (prompt("What is the weather like?")) {
 
   
   
-## Капитализация
+## Capitalization
 
-* Имена привязок не могут содержать пробелов, однако часто полезно использовать несколько слов, чтобы четко описать, что представляет собой привязка. Это в значительной степени ваш выбор для написания обязательного имени из нескольких слов:
+* Binding names may not contain spaces, yet it is often helpful to use multiple words to clearly describe what the binding represents. These are pretty much your choices for writing a binding name with several words in it:
 
 ```
 fuzzylittleturtle
@@ -465,21 +467,21 @@ FuzzyLittleTurtle
 fuzzyLittleTurtle
 ```
 
-* Первый стиль может быть трудным для чтения. Мне скорее нравится внешний вид подчеркиваний, хотя печатать этот стиль немного неудобно.
+* The first style can be hard to read. I rather like the look of the underscores, though that style is a little painful to type. 
 
-* Стандартные функции JavaScript и большинство программистов JavaScript следуют нижнему стилю — они пишут каждое слово с заглавной буквы, кроме первого.
+* The standard JavaScript functions, and most JavaScript programmers, follow the bottom style—they capitalize every word except the first. 
 
-* В некоторых случаях, например при использовании функции «Число», первая буква привязки также пишется с заглавной буквы. Это было сделано для того, чтобы пометить эту функцию как конструктор.
+* In a few cases, such as the Number function, the first letter of a binding is also capitalized. This was done to mark this function as a constructor.
   
 [🔝](#toc)  
 
   
     
-## Комментарии
+## Comments
 
-Часто необработанный код не передает всю информацию, которую вы хотите, чтобы программа донесла читателям, или он передает ее настолько загадочным образом, что люди могут ее не понять. В других случаях вы можете просто включить некоторые связанные мысли в свою программу. Для этого и нужны `комментарии`.
+Often, raw code does not convey all the information you want a program to convey to human readers, or it conveys it in such a cryptic way that people might not understand it. At other times, you might just want to include some related thoughts as part of your program. This is what `comments` are for.
 
-* Чтобы написать однострочный комментарий, вы можете использовать два символа косой черты (`//`), а затем текст комментария после него.
+* To write a single-line comment, you can use two slash characters (`//`) and then the comment text after it.
 
 ```javascript
 let accountBalance = calculateBalance(account);
@@ -492,14 +494,14 @@ addToReport(accountBalance, report);
 // It's a little valley, foaming like light in a glass.
 ```
 
-* Часть текста между `/*` и `*/` будет игнорироваться полностью, независимо от того, содержит ли она разрывы строк. Это полезно для добавления блоков информации о файле или фрагменте программы.
+* A section of text between `/*` and `*/` will be ignored in its entirety, regardless of whether it contains line breaks. This is useful for adding blocks of information about a file or a chunk of program.
 
 ```javascript
 /*
-Впервые я нашел этот номер нацарапанным на обратной стороне старого блокнота.
-   С тех пор он часто заходил, появляясь в телефонных номерах.
-   и серийные номера продуктов, которые я купил. Это очевидно
-   мне нравится, поэтому я решил оставить его.
+  I first found this number scrawled on the back of an old notebook.
+  Since then, it has often dropped by, showing up in phone numbers
+  and the serial numbers of products that I've bought. It obviously
+  likes me, so I've decided to keep it.
 */
 const myNumber = 11213;
 ```
@@ -507,24 +509,24 @@ const myNumber = 11213;
 [🔝](#toc)  
 
     
-## Краткое содержание
+## Summary
 
-* Теперь вы знаете, что программа состоит из операторов, которые сами иногда содержат больше операторов. Операторы, как правило, содержат выражения, которые сами могут быть составлены из меньших выражений.
+* You now know that a program is built out of statements, which themselves sometimes contain more statements. Statements tend to contain expressions, which themselves can be built out of smaller expressions.
 
-* Размещение операторов один за другим дает программу, которая выполняется сверху вниз. Вы можете внести нарушения в поток управления, используя условные (if, else и switch) и операторы цикла ( while, do и for).
+* Putting statements after one another gives you a program that is executed from top to bottom. You can introduce disturbances in the flow of control by using conditional (if, else, and switch) and looping (while, do, and for) statements.
 
-* Привязки можно использовать для хранения фрагментов данных под определенным именем, и они полезны для отслеживания состояния в вашей программе. Среда — это набор определенных привязок. Системы JavaScript всегда добавляют в вашу среду ряд полезных стандартных привязок.
+* Bindings can be used to file pieces of data under a name, and they are useful for tracking state in your program. The environment is the set of bindings that are defined. JavaScript systems always put a number of useful standard bindings into your environment.
 
-* Функции — это специальные значения, инкапсулирующие часть программы. Вы можете вызвать их, написав имя функции(аргумент1, аргумент2). Такой вызов функции является выражением и может возвращать значение.
+* Functions are special values that encapsulate a piece of program. You can invoke them by writing functionName(argument1, argument2). Such a function call is an expression and may produce a value.
   
 [🔝](#toc)  
 
     
-## Упражнения
+## Exercises
 
-:Канада:
-1. Зацикливание треугольника
-* Напишите цикл, который выполняет семь вызовов console.log и выводит следующий треугольник:
+:canada: 
+1. Looping a triangle
+* Write a loop that makes seven calls to console.log to output the following triangle:
 ```
 #
 ##
@@ -534,7 +536,7 @@ const myNumber = 11213;
 ######
 #######
 ```
-:warning: Подсказки: возможно, будет полезно знать, что длину строки можно узнать, написав после нее `.length`.
+:warning: Hints: It may be useful to know that you can find the length of a string by writing `.length ` after it.
 ```
 let abc = "abc";
 console.log(abc.length);
@@ -544,19 +546,19 @@ console.log(abc.length);
 
 2. FizzBuzz
 
-Напишите программу, которая использует console.log для вывода всех чисел от 1 до 100, за двумя исключениями. Для чисел, делящихся на 3, вместо числа выведите «Fizz», а для чисел, делящихся на 5 (а не на 3), вместо этого выведите «Buzz».
+Write a program that uses console.log to print all the numbers from 1 to 100, with two exceptions. For numbers divisible by 3, print "Fizz" instead of the number, and for numbers divisible by 5 (and not 3), print "Buzz" instead.
 
-Когда это заработает, измените свою программу так, чтобы она печатала «FizzBuzz» для чисел, которые делятся как на 3, так и на 5 (и по-прежнему печатала «Fizz» или «Buzz» для чисел, делящихся только на одно из них).
+When you have that working, modify your program to print "FizzBuzz" for numbers that are divisible by both 3 and 5 (and still print "Fizz" or "Buzz" for numbers divisible by only one of those).
 
-(На самом деле это вопрос собеседования, который, как утверждается, отсеивает значительный процент кандидатов в программисты. Поэтому, если вы ответите на него, ваша ценность на рынке труда просто вырастет.)
+(This is actually an interview question that has been claimed to weed out a significant percentage of programmer candidates. So if you solved it, your labor market value just went up.)
 
-:warning: Советы: вам придется использовать оператор по модулю `%` и операторы `if/else/else if`.
+:warning: Hints: You'll have to use `%` modulo operator and `if/else/else if` statements
 
-3. Шахматная доска
+3. Chessboard
 
-Напишите программу, которая создает строку, представляющую сетку 8×8, используя символы новой строки для разделения строк. В каждой позиции сетки имеется либо пробел, либо символ «#». Персонажи должны образовать шахматную доску.
+Write a program that creates a string that represents an 8×8 grid, using newline characters to separate lines. At each position of the grid there is either a space or a "#" character. The characters should form a chessboard.
 
-Передача этой строки в console.log должна показать что-то вроде этого:
+Passing this string to console.log should show something like this:
 ```
  # # # #
 # # # # 
@@ -567,7 +569,7 @@ console.log(abc.length);
  # # # #
 # # # #
 ```
-Если у вас есть программа, генерирующая этот шаблон, определите размер привязки = 8 и измените программу так, чтобы она работала с любым размером, выводя сетку заданной ширины и высоты.
+When you have a program that generates this pattern, define a binding size = 8 and change the program so that it works for any size, outputting a grid of the given width and height.
 
 
 :uzbekistan:

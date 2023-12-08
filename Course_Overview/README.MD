@@ -1,8 +1,8 @@
 [Go to ToC](../README.md)
 
-# Беглый взгляд на курс
+# Course Overview
 
-Примечание. Материалы в этих примечаниях взяты и/или переведены с сайта www.eloquentjavascript.net. Однако не все содержание может быть дословным.
+Notice: Materials in these notes are taken and/or translated from www.eloquentjavascript.net. However not all the content might be word for word.
 
 ## ToC
 * [Course Intro](#course-intro)  
@@ -22,92 +22,92 @@
 * [Short-Circuiting of Logical Operators](#short---circuitting-of-logical-operators)
 * [Summary](#summary)
 
-### Введение в курс
+### Course Intro
 
-* JavaScript — один из самых популярных языков программирования. По данным GitHub, JavaScript является лучшим языком программирования, и он более чем в два раза популярнее Python, занявшего второе место. Изучение языка JavaScript ценно для любого разработчика.
+* JavaScript is one of the most popular programming languages. According to GitHub, JavaScript is the top programming language, and it's more than twice as popular as the runner‑up, Python. Learning the JavaScript language is valuable for any developer. 
 
-* JavaScript — это язык Интернета, поддерживаемый всеми основными браузерами, но существуют инструменты, позволяющие вывести JavaScript далеко за пределы веб-страниц. Вы можете создавать собственные приложения для смартфонов и планшетов, настольные приложения для Windows и Mac и даже серверные приложения, используя JavaScript.
+* JavaScript is the language of the web supported by all major browsers, but tools exist to take JavaScript far beyond web pages. You can crdeate native smartphone and tablet apps, desktop apps for Windows and Mac, and even server‑side apps using JavaScript. 
 
-* В этом курсе я расскажу о программировании на JavaScript для тех, кто совершенно не знаком с программированием. Это также полезно для программистов, которые только начинают работать с языком JavaScript. Мы изучим функции JavaScript, необходимые для начала работы. К концу этого курса вы познаете самые основы JavaScript и сможете создавать простые программы для Интернета.
+* In this course, I'll cover JavaScript programming for those who are completely new to programming. This is also valuable for programmers who are just new to the JavaScript language. We'll learn the JavaScript features needed to get you started. By the end of this course, you'll know the very basics of JavaScript and you'll be able to build simple programs for the web. 
 
-* Для этого курса не требуются предварительные знания программирования.
+* No prior knowledge of programming is required for this course.   
 
 
 [🔝](#toc)  
 
 
-## Что такое JavaScript?
+## What is JavaScript?
 
-* JavaScript был представлен в 1995 году как способ добавления программ на веб-страницы в браузере Netscape Navigator.
+* JavaScript was introduced in 1995 as a way to add programs to web pages in the Netscape Navigator browser.
 
-* Важно отметить, что JavaScript не имеет почти ничего общего с языком программирования под названием Java.
+* It is important to note that JavaScript has almost nothing to do with the programming language named Java
 
-* Когда появился JavaScript, язык Java активно продавался и набирал популярность. Кто-то подумал, что было бы неплохо попытаться закрепить этот успех.
+* When JavaScript was being introduced, the Java language was being heavily marketed and was gaining popularity. Someone thought it was a good idea to try to ride along on this success
   
-* После его принятия за пределами Netscape был написан стандартный документ, описывающий, как должен работать язык JavaScript, чтобы различные части программного обеспечения, утверждавшие, что поддерживают JavaScript, на самом деле говорили об одном и том же языке. Это называется стандартом ECMAScript, в честь организации Ecma International, которая провела стандартизацию. На практике термины ECMAScript и JavaScript можно использовать как взаимозаменяемые — это два названия одного и того же языка.
+* After its adoption outside of Netscape, a standard document was written to describe the way the JavaScript language should work so that the various pieces of software that claimed to support JavaScript were actually talking about the same language. This is called the ECMAScript standard, after the Ecma International organization that did the standardization. In practice, the terms ECMAScript and JavaScript can be used interchangeably—they are two names for the same language.
 
-* Основная версия (ES6) вышла в 2015 году. 
+* Major version came out (ES6) in 2015.  
 
 
   
 [🔝](#toc)  
   
   
-## Под капотом
+## Under the Hood
 
-Внутри компьютера все представляет собой данные, а это означает, что все состоит из «битов», которые могут быть представлены как 0 или 1. Это означает высокий или низкий электрический заряд, сильный или слабый сигнал. Любую информацию можно свести к последовательности единиц и нулей.
+Inside a computer everything is data, which means everything is made out of `bits` which can be represented as 0 or 1. This means that high or low electrical charge, strong or weak signal. Any information can be reduced to be a sequence of 1s and 0s.
 
-Например, мы можем выразить число 13 в битах. Оно работает так же, как десятичное число, но вместо 10 разных цифр у вас есть только 2, а вес каждой увеличивается в 2 раза справа налево. Вот биты, составляющие число 13, с весами цифр, указанными под ними:
+For example, we can express the number 13 in bits. It works the same way as a decimal number, but instead of 10 different digits, you have only 2, and the weight of each increases by a factor of 2 from right to left. Here are the bits that make up the number 13, with the weights of the digits shown below them:
 
 ```  0   0   0   0   1   1   0   1  ```  
 ```128  64  32  16   8   4   2   1  ```
  
-Итак, это двоичное число 00001101. Его ненулевые цифры обозначают 8, 4 и 1 и в сумме дают 13.
+So that’s the binary number 00001101. Its non-zero digits stand for 8, 4, and 1, and add up to 13.  
 
 
 [🔝](#toc)  
 
 
 
-### Ценности
+### Values
 
-В оперативной памяти может быть более 30 миллиардов бит, а на жестком диске и того больше.
+In a RAM memory there can be more than 30 billion bits and in a hard disk even more
 
-Чтобы иметь возможность работать с таким количеством битов и не потеряться, мы должны разделить их на фрагменты, которые представляют собой фрагменты информации. В среде JavaScript эти фрагменты называются значениями. Хотя все значения состоят из битов, они играют разные роли. Каждое значение имеет тип, определяющий его роль. Некоторые значения являются числами, некоторые значения — фрагментами текста, некоторые значения — функциями и т. д.
+To be able to work with such quantities of bits without getting lost, we must separate them into chunks that represent pieces of information. In a JavaScript environment, those chunks are called values. Though all values are made of bits, they play different roles. Every value has a type that determines its role. Some values are numbers, some values are pieces of text, some values are functions, and so on.
 
-Чтобы создать значение, вам нужно просто вызвать его имя. Это удобно. Вам не нужно собирать строительный материал для своих ценностей или платить за него. Вы просто вызываете один, и — ух ты, он у вас есть. Конечно, они не созданы из воздуха. Каждое значение должно где-то храниться, и если вы хотите использовать их огромное количество одновременно, вам может не хватить памяти. К счастью, это проблема, только если они вам нужны все одновременно. Как только вы перестанете использовать ценность, она рассеется, оставив после себя свои кусочки, которые будут переработаны в качестве строительного материала для следующего поколения ценностей. 
+To create a value, you must merely invoke its name. This is convenient. You don’t have to gather building material for your values or pay for them. You just call for one, and whoosh, you have it. They are not really created from thin air, of course. Every value has to be stored somewhere, and if you want to use a gigantic amount of them at the same time, you might run out of memory. Fortunately, this is a problem only if you need them all simultaneously. As soon as you no longer use a value, it will dissipate, leaving behind its bits to be recycled as building material for the next generation of values.  
 
 
 [🔝](#toc)  
 
 
 
-## Числа
+## Numbers
 
-Значения числового типа, что неудивительно, являются числовыми значениями. В программе на JavaScript они записываются следующим образом: 
+Values of the number type are, unsurprisingly, numeric values. In a JavaScript program, they are written as follows: 
 
 ```javascript
 13
 ```
 
-Javascript использует фиксированное количество бит, 64 из них, для хранения одного числового значения.
-Учитывая 64 двоичных цифры, вы можете представить 2 ^ 64 разных числа (18 квантиллионов).
+Javascript uses a fixed number of bits, 64 of them, to store a single number value.
+Given 64 binary digits, you can represent 2^64 different numbers (18 quantillion) 
 
-Когда вы рассматриваете отрицательные числа, вы можете представить около 9 квантиллионов, что все еще очень много.
+When you consider negative numbers, it you can represent about 9 quantillion, still a lot.
 
-Дробные числа записываются через точку:
+Fractional numbers are written using a dot:
 
 ```javascript
 9.81
 ```
 
-Для очень больших или очень маленьких чисел вы также можете использовать экспоненциальную запись, добавив букву e (для показателя степени), за которой следует показатель степени числа.
+For very big or very small numbers, you may also use scientific notation by adding  an e (for exponent), followed by the exponent of the number
 
 ```javascript
 2.998e8
 ```
 
-:предупреждение: Вычисления с дробными числами, как правило, не точны, так же как число Пи не может быть точно выражено конечным числом десятичных цифр.  
+:warning: Calculations with fractional numbers are not generally precise, just as pi cannot be precisly expressed by a finite number of decimal digits.   
 
 
 
@@ -115,51 +115,53 @@ Javascript использует фиксированное количество 
 
 
 
-#### Арифметические операторы
+#### Arithmetic Operators
 
-Главное, что нужно делать с числами, — это арифметика. Арифметические операции, такие как сложение или умножение, принимают два числовых значения и создают из них новое число. Вот как они выглядят в JavaScript:
+Main thing to do with numbers is arithmetic. Arithmetic operations such as addition or multiplication take two number values and produce a new number from them. Here's what they look like in JavaScript:
 
 ```javascript
 100 + 4 * 11
 ```
 
-Символы `+` и `*` называются *операторами*.
+The `+` and `*` symbols are called *operators*. 
 
-Как и в математике, сначала выполняется умножение, и вы можете изменить это, заключив сложение в *круглые скобки*.
+Just as in mathematics, multiplication is done first, and you can change this by wrapping the addition in *parenthesies*. 
 
-Для вычитания `-` и деления `/` используются операторы.
+For subtraction `-` and for division `/` operators are used.
 
-Символ `%` используется для обозначения операции остатка.
+The `%` symbol is used to represent the `remainder` operation. 
 
 ```javascript
 144 % 12 gives = 0
 ```
-Этот оператор называется `modulo`  
+This operator is called `modulo`  
 
 
 [🔝](#toc)  
 
 
 
-### Специальные номера
-В JavaScript есть три специальных значения, которые считаются числами, но ведут себя не как обычные числа.
+
+### Special Numbers
+
+There are three special values in JavaScipt that are considered numbers but don't behave like normal numbers.
 
 * `Infinity`
 * `-Infinity`
 * `NaN`
 
-Первые два `Infinity` and `-Infinity`, которые представляют положительную и отрицательную бесконечности.
+The first two are `Infinity` and `-Infinity`, which represent the positive and  negative infinities. 
 
-Третий `NaN` означает `not a number`, даже если это значение числового типа. Вы получите этот результат, если, например, попытаетесь вычислить ` 0 / 0`, `Infinity - Infinity`или любое количество других числовых операций, которые не дают значимого результата.
+The third one is `NaN` stands for `not a number`, even though it is a value of the number type. You'll get this result when you, for example, try to calculate ` 0 / 0`, `Infinity - Infinity` or any number of other numeric operations that don't yield a meaningful result.  
 
 
 [🔝](#toc)  
 
 
 
-## Строки
+## Strings
 
-Следующий базовый тип данных — это строка. Строки используются для представления текста. Они пишутся путем заключения их содержания в кавычки.
+The next basic data type is the `string`. Strings are used to represent text. They are written by enclosing their content in quotes
 
 ```javascript
 `Down on the sea`
@@ -167,11 +169,11 @@ Javascript использует фиксированное количество 
 'Float on the ocean'
 ```
 
-Для их обозначения можно использовать одинарные, двойные кавычки или обратные кавычки, если у них есть соответствующая конечная кавычка.
+You can use single quotes, double quotes, or backticks to mark them, as long as it has an ending quote that match.
 
-* Строки также должны быть смоделированы как последовательность битов, чтобы иметь возможность существовать внутри компьютера. Способ, которым JavaScript это делает, основан на`Unicode` стандарт. Этот стандарт присваивает номер практически каждому символу, который вам когда-либо понадобится.
+* Strings, too, have to be modeled as series of bits to be able to exist inside computer. The way JavaScript does this is based on the `Unicode` standard. This standard assigns a number to virtually every character you would ever need.
 
-* Строки нельзя делить, умножать или вычитать, но `+` на них можно использовать оператор. Это `concatenates` две струны вместе
+* Strings cannot be divided, multipled, or subtracted, but the `+` operator can be used on them. It `concatenates` two strings together
 
 ```javascript
 
@@ -179,20 +181,22 @@ Javascript использует фиксированное количество 
 
 ```
 
-:предупреждение: литералы шаблонов > могут выполнять еще несколько трюков. Помимо возможности охватывать строки, они также могут вставлять другие значения.
+:warning: template literals > can do a few more tricks. Apart from being able to span lines, they can also embed other values.
+
 ```javascript
 `half of 100 is ${100 / 2}`
 ```
-Когда ты пишешь что-то внутри `${}` в литерале шаблона будет вычислен его результат.
+When you write something inside `${}` in a template literal, its result will be computed.  
+
 
 
 [🔝](#toc)  
 
 
 
-### Унарные операторы
+### Unary Operators
 
-Не все операторы являются символами. Некоторые пишутся словами, например `typeof` который создает строковое значение, указывающее тип значения, которое вы ему присваиваете.
+Not all operators are symbols. Some are written as words, for example `typeof` which produces a string value naming the type of the value you give it.
 
 ```javascript
 console.log(typeof 4.5)
@@ -200,7 +204,7 @@ console.log(typeof 4.5)
 console.log(typeof "x")
 -> string
 ```
-Оператор `-` (минус) может использоваться как *бинарный оператор* и как унарный оператор.
+The `-` (minus) operator can be used both as a *binary operator* and as a unary operator
 
 ```javascript
 console.log(- (10 - 2))
@@ -210,9 +214,10 @@ console.log(- (10 - 2))
 [🔝](#toc)  
 
 
-## Логические значения
+## Boolean Values
 
-Часто бывает полезно иметь значение, которое различает только две возможности, например «да» и «нет» или «вкл» и «выкл». Для этой цели в JavaScript есть логический тип, который имеет всего два значения: true и false, которые записываются как слова.
+It is often useful to have a value that distinguishes between only two possibilities, like "yes" and "no" or "on" and "off". For this purpose, JavaScript has a Boolean type, which has just two values, `true` and `false` which are written as words
+
 ```javascript
 1 > 2
 -> false
@@ -222,9 +227,9 @@ console.log(- (10 - 2))
 
 
 
-### Операторы сравнения
+### Comparison Operators
 
-Знаки `>` и `<` являются традиционными символами «больше» и «меньше» соответственно. Это бинарные операторы. Их применение приводит к получению логического значения, которое указывает, выполняются ли они в данном случае.
+The `>` and `<` signs are the traditional symbols for “is greater than” and “is less than”, respectively. They are binary operators. Applying them results in a Boolean value that indicates whether they hold true in this case.
 
 ```javascript
 
@@ -232,11 +237,11 @@ console.log("Aardvark" < "Zoroaster")
 // → true
 
 ```
-При сравнении строк JavaScript перебирает символы слева направо, сравнивая коды Unicode один за другим.
+When comparing strings, JavaScript goes over the characters from left to right, comparing the Unicode codes one by one.
 
-Другие подобные операторы: `>=` (больше или равно), `<=` (меньше или равно), `==` (равно) и `!=` (не равно).
+Other similar operators are `>=` (greater than or equal to), `<=` (less than or equal to), `==` (equal to), and `!=` (not equal to).
 
-:warning: В JavaScript есть только одно значение, которое не равно самому себе, и это NaN («не число»). Предполагается, что NaN обозначает результат бессмысленного вычисления и, как таковое, не равно результату каких-либо других бессмысленных вычислений.
+:warning: There is only one value in JavaScript that is not equal to itself, and that is NaN (“not a number”). NaN is supposed to denote the result of a nonsensical computation, and as such, it isn’t equal to the result of any other nonsensical computations.
 ```javascript
 console.log(NaN == NaN)
 // → false
@@ -245,9 +250,9 @@ console.log(NaN == NaN)
 
 
 
-### Логические операторы
+### Logical Operators
 
-Есть также некоторые операции, которые можно применять к самим логическим значениям. JavaScript поддерживает три логических оператора:
+There are also some operations that can be applied to Boolean values themselves. JavaScript supports three logical operators:
 
 * `&&` - and
 * `||` - or
@@ -263,7 +268,7 @@ console.log(!false)
 ```
 
 
-:предупреждение: Последний логический оператор, о котором я расскажу, не унарный и не двоичный, а *троичный, оперирующий тремя значениями. Оно пишется с вопросительным знаком и двоеточием, вот так:
+:warning: The last logical operator I will discuss is not unary, not binary, but *ternary, operating on three values. It is written with a question mark and a colon, like this:
 
 ```javascript
 console.log(true ? 1 : 2);
@@ -271,8 +276,8 @@ console.log(true ? 1 : 2);
 console.log(false ? 1 : 2);
 // → 2
 ```
-Этот оператор называется условным оператором (или иногда просто тернарным оператором, поскольку это единственный такой оператор в языке). Значение слева от вопросительного знака «выбирает», какое из двух других значений выйдет. Когда
-Если это правда, он выбирает среднее значение, а когда оно ложно, он выбирает значение справа.
+This one is called the conditional operator (or sometimes just the ternary operator since it is the only such operator in the language). The value on the left of the question mark “picks” which of the other two values will come out. Whe
+n it is true, it chooses the middle value, and when it is false, it chooses the value on the right.  
 
 
 [🔝](#toc)  
@@ -280,25 +285,25 @@ console.log(false ? 1 : 2);
 
 
 
-## Пустые значения
+## Empty Values
 
-Есть два специальных пустых значения, которые обозначают отсутствие значимого значения.
+There are two special empty values, which denote absence of a meaningful value
 
 * `null`
 * `undefined`
 
-Многие операции в языке, которые не возвращают осмысленного значения (некоторые из них вы увидите позже), возвращают неопределенное значение просто потому, что они должны возвращать какое-то значение.
+Many operations in the language that don’t produce a meaningful value (you’ll see some later) yield undefined simply because they have to yield some value.
 
-Разница в значении между undefined и null — случайность конструкции JavaScript, и в большинстве случаев она не имеет значения. В тех случаях, когда вам действительно приходится беспокоиться об этих значениях, я рекомендую рассматривать их как взаимозаменяемые.
+The difference in meaning between undefined and null is an accident of JavaScript’s design, and it doesn’t matter most of the time. In cases where you actually have to concern yourself with these values, I recommend treating them as mostly interchangeable.    
 
   
 [🔝](#toc)  
 
 
 
-## Автоматическое преобразование типов
+## Automatic Type Conversion
 
-JavaScript изо всех сил старается принять практически любую программу, которую вы ему даете, даже программы, которые делают странные вещи. Это хорошо демонстрируют следующие выражения:
+JavaScript goes out of its way to accept almost any program you give it, even programs that do odd things. This is nicely demonstrated by the following expressions:
 
 ```javascript
 console.log(8 * null)
@@ -313,9 +318,9 @@ console.log(false == 0)
 // → true
 ```
 
-Когда оператор применяется к «неправильному» типу значения, JavaScript незаметно преобразует это значение в нужный ему тип, используя набор правил, которые часто не соответствуют вашим ожиданиям или желаниям.
+When an operator is applied to the “wrong” type of value, JavaScript will quietly convert that value to the type it needs, using a set of rules that often aren’t what you want or expect
 
-При сравнении значений одного и того же типа с использованием == результат легко предсказать: вы должны получить истинное значение, если оба значения одинаковы, за исключением случая NaN. Но когда типы различаются, JavaScript использует сложный и запутанный набор правил, чтобы определить, что делать. В большинстве случаев он просто пытается преобразовать одно из значений в тип другого значения. Однако, когда на любой стороне оператора возникает значение null или неопределенное значение, он возвращает true только в том случае, если обе стороны имеют значение null или неопределенное.
+When comparing values of the same type using ==, the outcome is easy to predict: you should get true when both values are the same, except in the case of NaN. But when the types differ, JavaScript uses a complicated and confusing set of rules to determine what to do. In most cases, it just tries to convert one of the values to the other value’s type. However, when null or undefined occurs on either side of the operator, it produces true only if both sides are one of null or undefined.
 
 ```javascript
 console.log(null == undefined);
@@ -323,7 +328,7 @@ console.log(null == undefined);
 console.log(null == 0);
 // → false
 ```
-:warning: Если вы не хотите, чтобы какие-либо преобразования типов происходили, есть два дополнительных оператора: `===` и `!==`
+:warning: When you do not want any type conversions to happen, there are two additional operators: `===` and `!==`
 
 ```javascript
 "5" == 5
@@ -336,28 +341,29 @@ false
 
 
 
-## Короткое замыкание логических операторов
+## Short-Circuiting of Logical Operators
 
-Логические операторы ``&&`` и ``||`` обрабатывают значения разных типов особым образом. Они преобразуют значение слева в логический тип, чтобы решить, что делать, но в зависимости от оператора и результата этого преобразования они вернут либо исходное левое значение, либо правое значение.
+The logical operators ``&&`` and ``||`` handle values of different types in a peculiar way. They will convert the value on their left side to Boolean type in order to decide what to do, but depending on the operator and the result of that conversion, they will return either the original left-hand value or the right-hand value.
 
-:exclamation: Правила преобразования строк и чисел в логические значения гласят, что `0`, `NaN` и пустая строка ("""`) считаются `false`
+:exclamation: The rules for converting strings and numbers to Boolean values state that `0`, `NaN`, and the empty string (`""`) count as `false`
 
-* Оператор `||`, например, вернет значение слева от него, если его можно преобразовать в true, и в противном случае вернет значение справа. Это дает ожидаемый эффект, когда значения являются логическими, и делает нечто аналогичное для значений других типов.
+* The `||` operator, for example, will return the value to its left when that can be converted to true and will return the value on its right otherwise. This has the expected effect when the values are Boolean and does something analogous for values of other types.
 
-* Оператор `&&` работает аналогично, но наоборот. Когда значение слева преобразуется в false, он возвращает это значение, а в противном случае возвращает значение справа.
+* The `&&` operator works similarly but the other way around. When the value to its left is something that converts to false, it returns that value, and otherwise it returns the value on its right.  
 
 
 [🔝](#toc)  
 
 
 
-## Краткое содержание
+## Summary  
 
-Мы рассмотрели четыре типа значений JavaScript: числа, строки, логические значения и неопределенные значения.
+We looked at four types of JavaScript values: numbers, strings, boolean, and undefined values.
 
-Такие значения создаются путем ввода их имени `(true, null)` или значения `(13, "abc")`. Вы можете комбинировать и преобразовывать значения с помощью операторов. Мы видели бинарные операторы для арифметики `(+, -, *, / и %)`, конкатенации строк `(+)`, сравнения `(==, !=, ===, !==, <, >, <=, >=)` и логику `(&&, ||)`, а также несколько унарных операторов (- для отрицания числа, ! для логического отрицания и typeof для определения типа значения) и тернарный оператор ( ?:), чтобы выбрать одно из двух значений на основе третьего значения.
+Such values are created by typing in their name `(true, null)` or value `(13, "abc")`. You can combine and transform values with operators. We saw binary operators for arithmetic `(+, -, *, /, and %)`, string concatenation `(+)`, comparison `(==, !=, ===, !==, <, >, <=, >=)`, and logic `(&&, ||)`, as well as several unary operators (- to negate a number, ! to negate logically, and typeof to find a value’s type) and a ternary operator (?:) to pick one of two values based on a third value.
 
-Это дает вам достаточно информации, чтобы использовать JavaScript в качестве карманного калькулятора, но не более того. В следующей главе мы начнем связывать эти выражения вместе в базовые программы.
+This gives you enough information to use JavaScript as a pocket calculator but not much more. The next chapter will start tying these expressions together into basic programs.  
+
 
 [🔝](#toc)  
 

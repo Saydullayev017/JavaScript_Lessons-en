@@ -16,11 +16,11 @@
 * [JSON](#json)
 * [Exercises](#exercises)
 
-### Массивы
+### Arrays
 
-* Чтобы работать с фрагментом данных, нам необходимо представить его в памяти компьютера. Допустим, мы хотим сохранить список чисел: 2, 3, 5, 7 и 11.
-* Мы могли бы использовать отдельные переменные (неэффективно) для каждой из них или представить ее в виде строки «2 3 5 7 11» (нужен способ извлечения и преобразования обратно в число).
-* К счастью: javascript предоставляет тип данных специально для хранения последовательности значений. Он называется **массивом** и обозначается `[]`, разделенным `,`
+* To work with a chunk of data, we need to represent it in computer memory. Let's say we want to store a list of numbers: 2, 3, 5, 7, and 11.
+* We could use separate variables (not efficient) for each one or we can represent it in a string "2 3 5 7 11" (need a way to extract and convert back to Number) 
+* Fortunately: javascript provides data type specifically for storing sequence of values. It is called an **array** and is represented by `[]` separated by `,`
 
 ```javascript
 let listOfNumbers = [2, 3, 5, 7, 11];
@@ -39,35 +39,36 @@ console.log(listOfNumbers[2 - 1]);
 [🔝](#toc)  
   
 
-### Характеристики
+### Properties
 
-* До сих пор мы видели несколько странно выглядящих `myString.length` и `Math.max` в прошлом. Это выражения, которые обращаются к **свойству** некоторого значения.
+* So far we've seen some weird looking `myString.length` and `Math.max` in the past. These are expressions that access a **property** of some value.
 
-* `length` — это *свойство* значения `myString`
-     * `max` — это *свойство* объекта `Math`.
+    * `length` is the *property* of the value `myString`
+    * `max` is the *property* of `Math` object.
     
-* Почти все значения javascript имеют свойства, кроме `null` и `undefined`
+* Almost all javascript values have properties except `null` and `undefined`
 
 ```javascript
 null.length;
 // → TypeError: null has no properties
 ```
 
-* Существует **2 способа** доступа к свойствам в JavaScript:
-     1. `.` (точечная запись) => `value.x`
-     2. `[]` (квадратная скобка) => `value[x]`
+* There are **2 ways** to access properties in JavaScript:
+    1. `.` (dot notation) => `value.x`
+    2. `[]` (square bracket) => `value[x]`
     
-* При использовании точки `.` слово после точки является **буквальным именем** свойства.
-* При использовании квадратных скобок `[]` выражение между скобками *оценивается* для получения имени свойства.
+* When using a `.` dot, the word after dot is the **literal name** of the property
+* When using a `[]` square brackets, the expression between the brackets is *evaluated* to get the property name
 
-:exclamation: Элементы массива сохраняются как *свойства*, используя числа в качестве *имен свойств*. Вы не можете использовать точечную запись для чисел.
+:exclamation: The elements in an array are stored as the *properties*, using numbers as *property names*, You can't use dot notation with the numbers.
+
 
 
 [🔝](#toc)  
   
-### Методы
+### Methods
 
-* И строковые значения, и значения массива содержат, помимо свойства length, ряд свойств, которые содержат значения функций:
+* Both string and array values contain, in addition to the `length` property, a number of properties that hold function values:
   *   `.toUpperCase()`
   
 ```javascript
@@ -77,12 +78,12 @@ console.log(typeof doh.toUpperCase);
 console.log(doh.toUpperCase());
 // → DOH
 ```
-* Каждая строка имеет свойство toUpperCase(). При вызове он вернет копию строки, в которой все буквы были преобразованы в верхний регистр.
-* Также есть `toLowerCase()`, идущий в другую сторону.
+* Every string has a `toUpperCase()` property. When called, it will return a copy of the string in which all letters have been converted to uppercase.
+* There's also `toLowerCase()`, going the other way
 
-:exclamation: Свойства, содержащие *функции*, обычно называются **методами** значения, которому они принадлежат, поскольку `toUpperCase` — это метод строки.
+:exclamation: Properties that contain *functions* are generally called **methods** of the value they belong to, as in `toUpperCase` is a method of a string.
 
-* Этот пример демонстрирует два метода, которые можно использовать для управления массивами:
+* This example demonstrates two methods you can use to manipulate arrays:
 
 ```javascript
 let sequence = [1, 2, 3];
@@ -97,17 +98,17 @@ console.log(sequence);
 
 ```
 
-* Метод `push()` добавляет значения в конец массива
-* Метод `pop()` удаляет последнее значение в массиве
-* Метод `includes()` проверяет, существует ли заданное значение в массиве (ES6)
+* `push()` method adds values to the end of an array
+* `pop()` method removes the last value in the array
+* `includes()` method checks whether a given value exists in the array (ES6)
 
-:предупреждение: Это традиционные термины для операций со стеком. Стек в программировании — это структура данных, которая позволяет помещать в нее значения и снова извлекать их в обратном порядке, чтобы то, что было добавлено последним, удалялось первым.
+:warning: These are traditional terms for operations on a `stack`. A Stack, in programming, is a data structure that allows you to push values into it and pop them out again in the opposite order so that the thing that was added last is removed first. 
   
 [🔝](#toc)  
 
-### Объекты
+### Objects
 
-* **Объекты** представляют собой произвольную *набор свойств*. Один из способов создания объекта — использование **фигурных скобок** в качестве выражения..
+* **Objects** are arbitrary *collection of properties*. One way to create an object is by using **braces** as an expression.
 
 ```javascript
 let myCar = {
@@ -116,21 +117,22 @@ let myCar = {
     year: 1969
 };
 ```
-* Свойства разделяются **запятыми**.
-* Каждое свойство имеет **имя** , **двоеточие** и **значение**.
-* Отступ для удобства чтения.
-* Если имя свойства содержит **пробел**, заключите его в **кавычки**.
+* Properties are separated by **commas**.
+* Each property has a **name** , **colon** and a **value**
+* Indent for readability
+* If property name has a **space** wrap them around **quotes**
 
-:warning: если `{}` в начале оператора, то они являются блоком, в остальных позициях они описывают объект.
+:warning: if `{}` in the start of the statement, they are a block, in other positions they describe an object.
 
-* Если имя свойства не существует, ссылка на это свойство даст вам `undefined`
+* If the property name doesn't exist, referincing that property will give you `undefined`
 
-* Можно присвоить *свойству* значение с помощью оператора `=`.
-     * заменяет значение этого свойства
-     * ИЛИ создает новое свойство, если объект не имеет этого свойства
+* It is possible to give a *property* a value with `=` operator. 
+    * replaces value on that property
+    * OR creates a new property if object doesn't have that property
     
-* Унарный оператор delete используется (редко) для удаления свойства объекта.
-* Оператор `in`, примененный к строке или объекту, сообщает вам, есть ли у него свойство с таким именем.
+* `delete` unary operator is used (rarely) to delete a property from an object
+* `in` operator when applied to string or object, tells you whether it has a property with that name
+
 ```javascript
 let anObject = {left: 1, right: 2};
 console.log(anObject.left);
@@ -145,12 +147,12 @@ console.log("right" in anObject);
 
 ```
 
-* Функция `Object.keys` — возвращает массив строк с именами свойств объекта.
+* `Object.keys` function - return an array of strings with the Object's property names
 ```javascript
 console.log(Object.keys({x: 0, y: 0, z: 2}));
 // → ["x", "y", "z"]
 ```
-* Функция `Object.assign` — копирует все свойства из одного объекта в другой.
+* `Object.assign` function - copies all properties from one object to another
 ```javascript
 let objectA = {a: 1, b: 2};
 Object.assign(objectA, {b: 3, c: 4});
@@ -158,19 +160,19 @@ console.log(objectA);
 // → {a: 1, b: 3, c: 4}
 ```
 
-:exclamation: Короче говоря, массивы — это всего лишь своего рода объект, специализированный для хранения последовательностей вещей. Если вы вычислите ```typeof []```, он создаст `"object"`
+:exclamation: In summary, arrays, are just a kind of object specialized for storing sequences of things. If you evaluate ```typeof []```, it produces `"object"`
 
 
   
 [🔝](#toc)  
 
-### Мутабельность
+### Mutability
 
-* Мы видели, что значения объектов можно изменять. Типы значений, обсуждавшиеся в предыдущих главах, такие как числа, строки и логические значения, являются **неизменяемыми** — значения этих типов невозможно изменить.
+* We saw that object values can be modified. The types of values discussed in earlier chapters, such as numbers, strings, and Booleans, are all **immutable** —it is impossible to change values of those types.
 
-     * Если у вас есть строка, содержащая слово «кошка», другой код не сможет изменить символ в вашей строке, чтобы он писался как «крыса».
+    * If you have a string that contains "cat", it is not possible for other code to change a character in your string to make it spell "rat".
     
-* Объекты работают по-разному. Вы можете изменить их свойства, в результате чего одно и то же значение объекта будет иметь разное содержимое в разное время.
+* Objects work differently. You can change their properties, causing a single object value to have different content at different times.
 
 ```javascript
 let object1 = {value: 10};
@@ -188,15 +190,15 @@ console.log(object2.value);
 console.log(object3.value);
 // → 10
 ```
-:warning: Привязка `const` к объекту сама по себе не может быть изменена и будет продолжать указывать на тот же объект, **содержимое** этого объекта может измениться.
+:warning: `const` binding to an object can itself not be changed and will continue to point at the same object, the **contents** of that object might change.
 
-:exclamation: Когда вы сравниваете объекты с помощью оператора `==` в JavaScript, он сравнивает по идентичности: он вернет `true` только в том случае, если оба объекта имеют одно и то же значение.
+:exclamation: When you compare objects with JavaScript’s `==` operator, it compares by identity: it will produce `true` only if both objects are precisely the same value.
 
-* В JavaScript нет встроенной операции «глубокого» сравнения, которая сравнивает объекты по содержимому, но ее можно написать самостоятельно
+* There is no “deep” comparison operation built into JavaScript, which compares objects by contents, but it is possible to write it yourself
   
 [🔝](#toc)  
 
-### Циклы массивов
+### Array Loops
 
 ```javascript
 const foodArray = [
@@ -211,9 +213,9 @@ for (let i = 0; i < foodArray.length; i++) {
 }
 ```
 
-* Этот тип цикла распространен в классическом JavaScript: перебирать массивы по одному элементу за раз приходится часто, и для этого нужно запускать счетчик по длине массива и выбирать каждый элемент по очереди.
+* This kind of loop is common in classical JavaScript - going over arrays one element at a time is something that comes up a lot, and to do that you'd run a counter over the length of the array and pick out each element in turn
 
-* В современном JavaScript существует более простой способ написания таких циклов.
+* There's a simpler way to write such loops in modern JavaScript
 
 ```javascript
 for (let food of foodArray) {
@@ -221,7 +223,7 @@ for (let food of foodArray) {
 }
 ```
 
-* Это работает не только для массивов, но и для строк и некоторых других структур данных.
+* This works not only for arrays, but also for strings and some other data structures.
 
 
 
@@ -230,10 +232,10 @@ for (let food of foodArray) {
 [🔝](#toc)    
   
   
-### Дополнительные методы для массивов
+### Additional Methods for Arrays
 
 #### `shift()`, `unshift()`
-* Ранее мы видели `push` и `pop`, которые добавляют и удаляют элементы в конце массива. Соответствующие методы добавления и удаления элементов в **начале** массива называются `unshift` и `shift`.
+* We saw `push` and `pop`, which add and remove elements at the end of an array earlier. The corresponding methods for adding and removing things at the **start** of an array are called `unshift` and `shift`.
 
 ```javascript
 let todoList = [];
@@ -247,13 +249,13 @@ function rememberUrgently(task) {
   todoList.unshift(task);
 }
 ```
- * Эта программа управляет очередью задач. Вы добавляете задачи в конец очереди, вызывая Remember("продукты"), а когда вы готовы что-то сделать, вы вызываете getTask(), чтобы получить (и удалить) первый элемент из очереди. Функция RememberUrgently также добавляет задачу, но помещает ее в начало, а не в конец очереди.
+ * That program manages a queue of tasks. You add tasks to the end of the queue by calling remember("groceries"), and when you’re ready to do something, you call getTask() to get (and remove) the front item from the queue. The rememberUrgently function also adds a task but adds it to the front instead of the back of the queue. 
  
 #### `indexOf()`, `lastIndexOf()`
 
-* Для поиска определенного значения в массивах предусмотрен метод indexOf.
-* Метод просматривает массив от начала до конца и возвращает индекс, по которому было найдено запрошенное значение, или «-1», если оно не найдено.
-* Для поиска с конца, а не с начала, существует аналогичный метод под названием «lastIndexOf».
+* To search for a specific value, arrays provide an `indexOf` method. 
+* The method searches through the array from the start to the end and returns the index at which the requested value was found—or `-1` if it wasn’t found. 
+* To search from the end instead of the start, there’s a similar method called `lastIndexOf`.
 
 ```javascript
 console.log([1, 2, 3, 2, 1].indexOf(2));
@@ -261,13 +263,13 @@ console.log([1, 2, 3, 2, 1].indexOf(2));
 console.log([1, 2, 3, 2, 1].lastIndexOf(2));
 // → 3
 ```
-:warning: И indexOf, и LastIndexOf принимают необязательный второй аргумент, указывающий, с чего начать поиск.
+:warning: Both indexOf and lastIndexOf take an optional second argument that indicates where to start searching.  
 
  
 #### `slice()`
 
-* Другой фундаментальный метод массива — это «slice», который принимает начальный и конечный индексы и возвращает массив, между которыми есть только элементы.
-* Начальный индекс является включенным, конечный индекс – исключающим.
+* Another fundamental array method is `slice`, which takes start and end indices and returns an array that has only the elements between them. 
+* The start index is inclusive, the end index exclusive.
 
 ```javascript
 console.log([0, 1, 2, 3, 4].slice(2, 4));
@@ -275,11 +277,11 @@ console.log([0, 1, 2, 3, 4].slice(2, 4));
 console.log([0, 1, 2, 3, 4].slice(2));
 // → [2, 3, 4]
 ```
-:предупреждение: Если конечный индекс не указан, срез возьмет все элементы после начального индекса. Вы также можете опустить начальный индекс, чтобы скопировать весь массив.
+:warning: When the end index is not given, slice will take all of the elements after the start index. You can also omit the start index to copy the entire array.
 
 #### `concat()`
 
-* Метод concat можно использовать для склеивания массивов для создания нового массива, аналогично тому, что оператор `+` делает для строк. 
+* The `concat` method can be used to glue arrays together to create a new array, similar to what the `+` operator does for strings.  
 ```javascript
 function remove(array, index) {
   return array.slice(0, index)
@@ -290,7 +292,7 @@ console.log(remove(["a", "b", "c", "d", "e"], 2));
 
 ```
 
-:предупреждение: Если вы передадите concat аргумент, который не является массивом, это значение будет добавлено в новый массив, как если бы это был массив из одного элемента.
+:warning: If you pass concat an argument that is not an array, that value will be added to the new array as if it were a one-element array.
  
 [🔝](#toc)  
 
@@ -298,9 +300,9 @@ console.log(remove(["a", "b", "c", "d", "e"], 2));
   
   
   
-### Строки и их свойства
+### Strings and Their Properties
 
-* Мы можем читать такие свойства, как length и toUpperCase, из строковых значений. Но если мы попытаемся создать новое свойство, JavaScript не будет жаловаться, но на самом деле он не будет работать.
+* We can read properties like `length` and `toUpperCase` from string values. But if we try to create a new property, javascript doesn't complain, but it doesn't actually work.
 
 ```javascript
 let kim = "Kim";
@@ -308,9 +310,9 @@ kim.age = 88;
 console.log(kim.age);
 // → undefined
 ```
-#### `slice()` и `indexOf`
+#### `slice()` & `indexOf`
 
-* Но у этих типов есть встроенные свойства. Каждое строковое значение имеет несколько методов. Некоторые очень полезные из них — «slice» и «indexOf», которые напоминают одноименные методы массива.
+* But these types do have built-in properties. Every string value has a number of methods. Some very useful ones are `slice` and `indexOf`, which resemble the array methods of the same name.
 
 ```javascript
 
@@ -320,16 +322,16 @@ console.log("coconut".indexOf("u"));
 // → 5
 
 ```
-:exclamation: Единственное отличие состоит в том, что indexOf строки может искать строку, содержащую более одного символа, тогда как соответствующий метод массива ищет только один элемент.
+:exclamation: One difference is that a string’s indexOf can search for a string containing more than one character, whereas the corresponding array method looks only for a single element.
 
 ```javascript
 console.log("one two three".indexOf("ee"));
 // → 11
 ```
 
-#### `обрезать()`
+#### `trim()`
 
-* Метод `trim` удаляет пробелы (пробелы, символы новой строки, табуляции и подобные символы) в начале и конце строки.
+* The `trim` method removes whitespace (spaces, newlines, tabs, and similar characters) from the start and end of a string.
 
 ```javascript
 console.log("  okay \n ".trim());
@@ -338,15 +340,16 @@ console.log("  okay \n ".trim());
 
 #### `padStart()`
 
-* `padStart` принимает в качестве аргументов желаемую длину и символ заполнения.
+* `padStart` takes the desired length and padding character as arguments.
+
 ```javascript
 console.log(String(6).padStart(3, "0"));
 // → 006
 ```
 
-#### `split() и join()`
+#### `split() & join()`
 
-* Вы можете разделить строку при каждом появлении другой строки с помощью функции Split и снова соединить ее с помощью команды join.
+* You can split a string on every occurrence of another string with split and join it again with join.
 
 ```javascript
 let sentence = "Secretarybirds specialize in stomping";
@@ -357,9 +360,9 @@ console.log(words.join(". "));
 // → Secretarybirds. specialize. in. stomping
 ```
 
-#### `повторить()`
+#### `repeat()`
 
-* Строку можно повторить с помощью метода повтора, который создает новую строку, содержащую несколько склеенных вместе копий исходной строки.
+* A string can be repeated with the repeat method, which creates a new string containing multiple copies of the original string, glued together.
 
 ```javascript
 console.log("LA".repeat(3));
@@ -369,12 +372,12 @@ console.log("LA".repeat(3));
 [🔝](#toc)  
 
  
-### Остальные параметры
+### Rest Parameters
 
-* Для функции может быть полезно принимать любое количество аргументов. Например, `Math.max` вычисляет максимум из **всех** переданных ему аргументов.
+* It can be useful for a function to accept any number of arguments. For example, `Math.max` computes the maximum of **all** the arguments it is given.
 
-* Чтобы написать такую функцию, нужно поставить три точки перед последним параметром функции, например:
-* При вызове такой функции **параметр rest** привязывается к массиву, содержащему все дальнейшие аргументы.
+* To write such a function, you put three dots before the function’s last parameter, like this:
+* When such a function is called, the **rest parameter** is bound to an array containing all further arguments.
 ```javascript
 function max(...numbers) {
   let result = -Infinity;
@@ -387,7 +390,7 @@ console.log(max(4, 1, 9, -2));
 // → 9
 
 ```
-* Аналогичное обозначение с тремя точками можно использовать для **вызова** функции с массивом аргументов.
+* You can use a similar three-dot notation to **call** a function with an array of arguments.
 
 ```javascript
 let numbers = [5, 1, 7];
@@ -395,9 +398,9 @@ console.log(max(...numbers));
 // → 7
 ```
 
-* Это **распространяет** массив в вызов функции, передавая его элементы как отдельные аргументы. Можно включить такой массив вместе с другими аргументами, как в `max(9, ...numbers, 2)`.
+* This **spreads** out the array into the function call, passing its elements as separate arguments. It is possible to include an array like that along with other arguments, as in `max(9, ...numbers, 2)`.
 
-* Обозначение массива в квадратных скобках аналогичным образом позволяет `оператору расширения` расширять другой массив в новый массив.
+* Square bracket array notation similarly allows the `spread operator` to spread another array into the new array.
 
 ```javascript
 let words = ["never", "fully"];
@@ -411,11 +414,11 @@ console.log(["will", ...words, "understand"]);
 
 
   
-### Деструктуризация
+### Destructuring
 
-* Деструктуризация присваивания позволяет присваивать свойства массива или объекта переменным, используя синтаксис, похожий на литералы массива или объекта.
+* Destructuring assignment allows you to assign the properties of an array or object to variables using syntax that looks similar to array or object literals
 
-* Без деструктуризации присваивания вы можете получить доступ к первым трем элементам массива следующим образом:
+* Without destructuring assignment, you might access the first three items in an array like this:
 
 ```javascript
 var first = someArray[0];
@@ -423,12 +426,12 @@ var second = someArray[1];
 var third = someArray[2];
 ```
 
-* При деструктуризации присваивания эквивалентный код становится более кратким и читабельным:
+* With destructuring assignment, the equivalent code becomes more concise and readable:
 ```javascript
 var [first, second, third] = someArray;
 ```
 
-* Деструктуризация объектов позволяет привязывать переменные к различным свойствам объекта. Вы указываете привязываемое свойство, а затем переменную, к которой вы привязываете его значение.
+* Destructuring on objects lets you bind variables to different properties of an object. You specify the property being bound, followed by the variable you are binding its value to.
 
 ```javascript
 var robotA = { name: "Bender" };
@@ -443,7 +446,7 @@ console.log(nameB);
 // "Flexo"
 ```
 
-:warning: Обратите внимание: если вы попытаетесь деструктурировать значение null или undefined, вы получите ошибку, так же, как если бы вы напрямую попытались получить доступ к свойству этих значений.
+:warning: Note that if you try to destructure null or undefined, you get an error, much as you would if you directly try to access a property of those values.
 
 ```javascript
 var {blowUp} = null;
@@ -456,11 +459,11 @@ var {blowUp} = null;
   
 ### JSON
 
-* Поскольку свойства лишь улавливают свое значение, а не содержат его, объекты и массивы хранятся в памяти компьютера в виде последовательностей битов, содержащих адреса (места в памяти) их содержимого. Таким образом, массив с другим массивом внутри него состоит из (по крайней мере) одной области памяти для внутреннего массива и другой для внешнего массива, содержащей (помимо прочего) двоичное число, которое представляет позицию внутреннего массива.
+* Because properties only grasp their value, rather than contain it, objects and arrays are stored in the computer’s memory as sequences of bits holding the addresses—the place in memory—of their contents. So an array with another array inside of it consists of (at least) one memory region for the inner array, and another for the outer array, containing (among other things) a binary number that represents the position of the inner array.
 
-* Если вы хотите сохранить данные в файл для дальнейшего использования или отправить их на другой компьютер по сети, вам придется каким-то образом преобразовать эти клубки адресов памяти в описание, которое можно будет сохранить или отправить. Я полагаю, вы могли бы отправить всю память вашего компьютера вместе с адресом интересующего вас значения, но это не кажется лучшим подходом.
+* If you want to save data in a file for later or send it to another computer over the network, you have to somehow convert these tangles of memory addresses to a description that can be stored or sent. You could send over your entire computer memory along with the address of the value you’re interested in, I suppose, but that doesn’t seem like the best approach.
 
-* Что мы можем сделать, так это сериализовать данные. Это означает, что оно преобразуется в плоское описание. Популярный формат сериализации называется **JSON (произносится «Джейсон»), что означает «Нотация объектов JavaScript»**. Он широко используется в качестве формата хранения и передачи данных в Интернете, даже на языках, отличных от JavaScript.
+* What we can do is serialize the data. That means it is converted into a flat description. A popular serialization format is called **JSON (pronounced “Jason”), which stands for JavaScript Object Notation**. It is widely used as a data storage and communication format on the Web, even in languages other than JavaScript.
 
 ```javascript
 {
@@ -468,11 +471,11 @@ var {blowUp} = null;
   "events": ["work", "touched tree", "pizza", "running"]
 }
 ```
-:exclamation: Все имена свойств должны быть заключены в двойные кавычки. Допускаются только простые выражения данных — никаких вызовов функций, привязок или чего-либо еще, что требует реальных вычислений. Комментарии в формате JSON не допускаются.
+:exclamation: All property names have to be surrounded by double quotes, and only simple data expressions are allowed—no function calls, bindings, or anything that involves actual computation. Comments are not allowed in JSON.
 
 #### `JSON.srtingify() & JSON.parse()`
 
-* JavaScript предоставляет нам функции JSON.stringify и JSON.parse для преобразования данных в этот формат и обратно. Первый принимает значение JavaScript и возвращает строку в кодировке JSON. Второй принимает такую строку и преобразует ее в кодируемое ею значение.
+* JavaScript gives us the functions JSON.stringify and JSON.parse to convert data to and from this format. The first takes a JavaScript value and returns a JSON-encoded string. The second takes such a string and converts it to the value it encodes.
 
 ```javascript
 let string = JSON.stringify({squirrel: false,
@@ -489,11 +492,11 @@ console.log(JSON.parse(string).events);
  
 ### Exercises
 
-#### 1) Сумма диапазона
+#### 1) The sum of a range
 
-* Напишите функцию диапазона, которая принимает два аргумента: start и end и возвращает массив, содержащий все числа от начала до конца (включительно).
+* Write a range function that takes two arguments, `start` and `end`, and returns an array containing all the numbers from start up to (and including) end.
 
-* Далее напишите функцию sum, которая принимает массив чисел и возвращает сумму этих чисел.
+* Next, write a `sum` function that takes an array of numbers and returns the sum of these numbers.
 
 ```javascript
 
@@ -507,18 +510,18 @@ console.log(sum(range(1, 10)));
 // → 55
 ```
 
-* БОНУС: измените функцию диапазона, чтобы она принимала необязательный третий аргумент, указывающий значение «шага», используемое при построении массива. Если шаг не указан, элементы увеличиваются на единицу, что соответствует старому поведению. Диапазон вызова функции(1, 10, 2) должен возвращать [1, 3, 5, 7, 9]. Убедитесь, что он также работает с отрицательными значениями шага, чтобы диапазон (5, 2, -1) давал [5, 4, 3, 2].
+* BONUS: Modify your range function to take an optional third argument that indicates the “step” value used when building the array. If no step is given, the elements go up by increments of one, corresponding to the old behavior. The function call range(1, 10, 2) should return [1, 3, 5, 7, 9]. Make sure it also works with negative step values so that range(5, 2, -1) produces [5, 4, 3, 2].
 
 
-#### 2) Реверсирование массива
+#### 2) Reversing an array
 
-* Массивы имеют обратный метод, который изменяет массив, инвертируя порядок появления его элементов.
-* Для этого упражнения напишите две функции: ReverseArray и ReverseArrayInPlace.
-* Первый, `reverseArray`, принимает массив в качестве аргумента и создает **новый** массив, содержащий те же элементы в обратном порядке.
-* Второй, `reverseArrayInPlace`, делает то же, что и обратный метод: он **модифицирует массив**, заданный в качестве аргумента, переворачивая его элементы.
-:предупреждение: Ни один из них не может использовать стандартный обратный метод.
+* Arrays have a `reverse` method that changes the array by inverting the order in which its elements appear.
+* For this exercise, write two functions, `reverseArray` and `reverseArrayInPlace`
+* The first, `reverseArray`, takes an array as argument and produces a **new** array that has the same elements in the inverse order.
+* The second, `reverseArrayInPlace`, does what the reverse method does: it **modifies the array** given as argument by reversing its elements. 
+:warning: Neither may use the standard reverse method.
 
-СОВЕТ: Полезно использовать Math.floor для округления вниз.
+HINT: Useful to use `Math.floor` to round down.
 
 ```javascript
 
@@ -534,16 +537,16 @@ console.log(arrayValue);
 ```
 
 
-#### 3) Более глубокое сравнение
+#### 3) Deeper Comparison
 
-* Оператор `==` сравнивает объекты по идентичности. Но иногда вы предпочитаете сравнить значения их фактических свойств.
+* The `==` operator compares objects by identity. But sometimes you’d prefer to compare the values of their actual properties.
 
 
-* Напишите функцию deepEqual, которая принимает два значения и возвращает true, только если они имеют одно и то же значение или являются объектами с одинаковыми свойствами, где значения свойств равны при сравнении с рекурсивным вызовом deepEqual.
+* Write a function deepEqual that takes two values and returns true only if they are the same value or are objects with the same properties, where the values of the properties are equal when compared with a recursive call to deepEqual.
 
-* Чтобы узнать, следует ли сравнивать значения напрямую (используйте для этого оператор ===) или сравнивать их свойства, вы можете использовать оператор typeof. Если он создает «объект» для обоих значений, вам следует провести глубокое сравнение. Но вы должны принять во внимание одно глупое исключение: по исторической случайности typeof null также создает «объект».
+* To find out whether values should be compared directly (use the === operator for that) or have their properties compared, you can use the typeof operator. If it produces "object" for both values, you should do a deep comparison. But you have to take one silly exception into account: because of a historical accident, typeof null also produces "object".
 
-:warning: Подсказка: функция `Object.keys` будет полезна, когда вам нужно просмотреть свойства объектов для их сравнения.
+:warning: Hint: The `Object.keys` function will be useful when you need to go over the properties of objects to compare them.
 
 
 ```javascript

@@ -1,9 +1,9 @@
 [Go to ToC](../README.md)
 
-# Функции
+# Functions
 
-* Функции — самая важная часть языка JavaScript. Это дает нам возможность обернуть программу в значение, что уменьшает повторение и модульность. д
-* Подобно тому, как у нас, людей, есть словарный запас, который можно использовать в нашей речи, у JavaScript также есть словарь, содержащий около 20 000 слов. С помощью функций мы можем расширить этот словарь и создать свой собственный.
+* Functions are the most important part of JavaScript Language. It gives us the ability to wrap a program in a value, which reduces repeating ourselves and modularity.  d
+* Like we humans have a vocabulary to use in our speech, JavaScript has also a vocabulary that has about 20,000 words in it. With the help of fuctions we can expand on this vocabulary to create our own.
 
 
 ## ToC
@@ -21,17 +21,17 @@
 * [Exercises](#exercises)   
 
 
-### Определение функции
+### Defining a function  
 
-* На машинном уровне функция представляет собой последовательность единиц и нулей, как и любое другое значение.
+* In machine level, function is a sequence of 1s and 0s just like any other value.
 
-* Функции создаются с помощью ключевого слова *function*.
+* Functions are created with the keyword *function*
 
-* Функции имеют набор
-     * *параметры* - значения, которые принимает функция (внутри `()`)
-     * *body* — содержит операторы, которые должны выполняться при вызове функции.
+* Functions have a set of 
+    * *parameters* - values that function accepts (within `()`)
+    * *body* - contains the statements that are to be executed when the function is called
 
-* Тело всегда заключено в `{}` 
+* Body is always wrapped within `{}`  
 
 ```javascript
 const square = function(x) {
@@ -43,12 +43,12 @@ console.log(square(12));
 ```  
 
 
-* Функции могут иметь несколько параметров или вообще не иметь параметров.
-* Функции могут `возвращать return` значение ИЛИ просто выполнять `побочный эффект`.
+* Functions can have multiple parameters or no parameters at all.
+* Functions can `return` a value OR just perform `side-effect`  
 
-:exclamation: Если функция ничего не возвращает и вы пропустите оператор return, функция все равно вернет `undefined`
+:exclamation: If function doesn't return anything and you omit return statement, function still returns `undefined`  
 
-:предупреждение: Параметры функции ведут себя как обычные привязки, однако передаются `вызывающей` стороной.
+:warning: Parameters to a function behaves like regular bindings, however is passed by the `caller`.
 
 ```javascript  
 const makeNoise = function() {
@@ -78,15 +78,15 @@ console.log(power(2, 10));
 [🔝](#toc)  
   
 
-### Привязки и области видимости
+### Bindings and scopes
 
-* Каждая привязка имеет *область*, которая является частью программы, в которой привязка видна.
-* Для привязок, объявленных вне какой-либо функции *block*, областью действия является вся программа. Они называются *глобальной областью*
-* Для привязок, объявленных внутри любой функции или блока, доступ к ним возможен только внутри этого блока. Это называется *локальная область действия*.
+* Each binding has a *scope*, which is part of the program in which the binding is visible
+* For bindings which are declared outside of any function of *block* the scope is the whole program. These called *global scope*  
+* For bindings which are declared inside of any function or block, they can only be accessed within that block. These are called *local scope*
 
-* Привязки, объявленные с помощью `let` и `const`, фактически являются локальными для блока, в котором они объявлены.
+* Bindings declared with `let` and `const` are in fact local to the block that they are declared in.
 
-:warning: В этом случае `var` работает по-другому: они видны во всей функции, в которой они появляются, или во всей глобальной области видимости, если они не находятся в функции.
+:warning: `var` works differently in this case, are visible throughout the whole function that they appear in—or throughout the global scope, if they are not in a function.
 
 ```javascript 
 let x = 10;
@@ -119,9 +119,9 @@ console.log(n);
 
 [🔝](#toc)  
   
-### Вложенная область видимости
+### Nested scope
 
-* Блоки и функции могут создаваться внутри других блоков и функций, что обеспечивает несколько степеней локальности.
+* Blocks and functions can be created inside other blocks and functions, producing multiple degrees of locality.
 
 ```javascript
 const hummus = function(factor) {
@@ -140,20 +140,21 @@ const hummus = function(factor) {
   ingredient(0.5, "teaspoon", "cumin");
 };
 ```
-* Код внутри функции ингредиента может видеть привязку фактора из внешней функции. Но его локальные привязки, такие как unit или IngendingAmount, не видны во внешней функции.
+* The code inside the ingredient function can see the factor binding from the outer function. But its local bindings, such as unit or ingredientAmount, are not visible in the outer function. 
+
   
 [🔝](#toc)  
 
-### Функции как значения
+### Functions as values
 
-* Привязка функции обычно действует просто как имя для определенной части программы.
+* A function binding usually simply acts as a name for specific piece of the program. 
 
-* Он действует как любое другое значение, что означает, что он может делать все то же, что и другие значения, например:
+* It acts just any other value, which means it can do all the things that other values can do such as:
 
-       * используйте его в произвольных выражениях, а не просто вызывайте
-       * сохранить значение функции в новой привязке
-       * передать его как аргумент функции
-       * присвоить ему новое значение
+      * use it in arbitrary expressions, not just call it
+      * store function value it in a new binding
+      * pass it as argument to a function
+      * assign it a new value
       
 ```javascript
 let launchMissiles = function() {
@@ -168,11 +169,11 @@ if (safeMode) {
   
 [🔝](#toc)  
 
-### Обозначение объявления
+### Declaration notation
 
-* Существует немного более короткий способ объявления привязки функции.
+* There's a slightly shorter way to declare a function binding.
 
-* Когда ключевое слово function используется в начале оператора, оно работает по-другому:
+* When `function` keyword is used at the start of a statement, it works differently:
 
 ```javascript
 function square(x) {
@@ -189,17 +190,18 @@ function future() {
 }
 ```  
 
-:warning: Приведенный выше код работает, даже несмотря на то, что функция определена *ниже* кода, который ее использует.
+:warning: The code above works, even though the function is defined *below* the code that uses it. 
 
-* Объявления функций не являются частью обычного потока управления сверху вниз. Концептуально они перемещаются в начало своей области и могут использоваться всем кодом в этой области.
+* Function declarations are not part of the regular top-to-bottom flow of control. They are conceptually moved to the top of their scope and can be used by all the code in that scope.
+
 
 
   
 [🔝](#toc)  
 
-### Стрелочные функции
+### Arrow functions
 
-* Третье обозначение функций, называемое **стрелочными функциями** (=>), состоящее из знака равенства и символа «больше» (**не >=**).
+* Third notation for functions, called **arrow functions** (=>) made up of equal sign and a greater-than character (**not >=**) 
 
 ```javascript
 const power = (base, exponent) => {
@@ -216,10 +218,10 @@ const power = (base, exponent) => {
 const square1 = (x) => { return x * x; };
 const square2 = x => x * x;
 ```
-:exclamation: Если в списке параметров только один, мы можем опустить `()`
-:exclamation: Если тело содержит только одно выражение, а не блок в фигурных скобках, это выражение будет возвращено из функции.
+:exclamation: When parameter list has only one, we can omit `()`
+:exclamation: If body is only has single expression, rather than a block in braces, that expression will be return from th function.
 
-* Когда стрелочная функция вообще не имеет параметров, ее список параметров представляет собой просто пустой набор скобок:
+* When an arrow function has no parameters at all, its parameter list is just an empty set of parantheses:
 
 ```javascript
 const horn = () => {
@@ -231,15 +233,15 @@ const horn = () => {
 [🔝](#toc)    
   
   
-### Стек вызовов
+### The call stack
 
-* Поскольку функция при возвращении должна вернуться в то место, которое ее вызвало, компьютер должен запомнить контекст, из которого произошел вызов.
+* Because a function has to jump back to the place that called it when it returns, the computer must remember the context from which the call happened. 
 
-* Местом, где компьютер сохраняет этот контекст, является **стек вызовов**.
+* The place where the computer stores this context is the **call stack**
 
-* Каждый раз при вызове функции текущий контекст сохраняется **верхней** части этого стека. Когда функция возвращает значение, она удаляет верхний контекст из стека и использует этот контекст для продолжения выполнения.
+* Everytime a function is called, the current context is stored on **top** of this stack. When a function returns it removes the top context from the stack and uses that context to contnue execution.
 
-:предупреждение: Для хранения этого стека требуется место в памяти компьютера. Когда стек становится слишком большим, компьютер выходит из строя с сообщением типа «нет места в стеке» или «слишком много рекурсии».
+:warning: Storing this stack requires space in the computers' memory. When the stack grows too big, the computer will fail with a message like "out of stack space" or "too much recursion"
 
 ```javascript
 function chicken() {
@@ -259,11 +261,11 @@ console.log(chicken() + " came first.");
 
   
 
-### Необязательные аргументы
+### Optional Arguments
 
-* JavaScript очень широко подходит к количеству аргументов, передаваемых функции.
-* Если вы передаете слишком много, лишние игнорируются.
-* Если вы передадите слишком мало, недостающие получат значение «неопределено».
+* JavaScript is very broadminded about the number of arguments you pass to a function. 
+* If you pass too many, the extra ones are ignored.
+* If you pass too few, the missing ones will get the value `undefined`
 
 ```javascript
 function square(x) { return x * x; }
@@ -271,9 +273,9 @@ console.log(square(4, true, "hedgehog"));
 // → 16
 ```
 
-* У этого есть плюсы и минусы.
-    * Недостаток: если вы передадите неправильное количество аргументов, вы не получите никаких ошибок, а это значит, что вам будет труднее найти ошибку.
-    * Однако положительным моментом является то, что вы можете определить одну функцию, которая будет вести себя в зависимости от количества переданных аргументов.
+* This has an upside and a downside
+   * The downside is: if you pass wrong number of arguments you don't get any errors, which means it'll be harder for you to find the mistake.
+   * The upside however, is that you can define one function that behaves according to the number of arguments given
    
 ```javascript
 function minus(a, b) {
@@ -287,7 +289,7 @@ console.log(minus(10, 5));
 // → 5
 ```  
 
-:exclamation: Если вы напишете оператор `=` после параметра, за которым следует выражение, значение этого выражения заменит аргумент, если он не задан.
+:exclamation: If you write an `=` operator after a parameter, followed by an expression, the value of that expression will replace the argument when it is not given.
 
 ```javascript
 function power(base, exponent = 2) {
@@ -306,9 +308,9 @@ console.log(power(2, 6));
   
 [🔝](#toc)  
 
-### Закрытие
+### Closure
 
-* Что происходит с локальными привязками, когда вызов функции, создавший их, перестает быть активным?
+* What happens to local bindings when the function call that created them is no longer active?
 
 ```javascript
 
@@ -325,9 +327,9 @@ console.log(wrap2());
 // → 2
 
 ```
-* Возможность ссылаться на конкретный экземпляр локальной привязки в охватывающей области называется **закрытием**.
+* Being able to reference a specific instance of a local binding in an enclosing scope is called **closure**
 
-* Функция, которая ссылается на привязки из локальных областей вокруг себя, называется **a** *закрытие*.
+* A function that references bindings from local scopes around it is called **a** *closure*.
 
 ```javascript
 function multiplier(factor) {
@@ -339,13 +341,13 @@ console.log(twice(5));
 // → 10
 ```  
 
-:предупреждение: Размышление о подобных программах требует некоторой практики. Хорошая ментальная модель — думать о значениях функций как о содержащих как код в своем теле, так и о среде, в которой они созданы. При вызове тело функции видит среду, в которой оно было создано, а не среду, в которой оно было вызвано. 
+:warning: Thinking about programs like this takes some practice. A good mental model is to think of function values as containing both the code in their body and the environment in which they are created. When called, the function body sees the environment in which it was created, not the environment in which it is called.  
   
 [🔝](#toc)  
 
-### Рекурсия
+### Recursion
 
-* Функция, вызывающая сама себя, называется **рекурсивной**. Функция может вызывать сама себя *при условии, что она не делает этого так часто, что приводит к переполнению стека* (теперь вы знаете, что такое stackoverflow :)
+* A function that calls itself is called **recursive**. It is okay for a function to call itself *as long as it doesn't do it so often that it overflows the stack* (now you know the meaning of stackoverflow :)
 
 ```javascript
 
@@ -362,16 +364,16 @@ console.log(power(2, 3));
 
 ``` 
 
-:warning: Но у этой реализации есть одна проблема: в типичных реализациях JavaScript она примерно в три раза медленнее, чем версия с циклом. Выполнение простого цикла обычно дешевле, чем многократный вызов функции.
+:warning: But this implementation has one problem: in typical JavaScript implementations, it’s about three times slower than the looping version. Running through a simple loop is generally cheaper than calling a function multiple times.  
 
-* Дилемма скорости и элегантности интересна. Вы можете рассматривать это как своего рода континуум между дружественностью к человеку и дружественностью к машинам. Практически любую программу можно сделать быстрее, если сделать ее больше и запутаннее. Программист должен принять решение о соответствующем балансе.
+* The dilemma of speed versus elegance is an interesting one. You can see it as a kind of continuum between human-friendliness and machine-friendliness. Almost any program can be made faster by making it bigger and more convoluted. The programmer has to decide on an appropriate balance.
 
   
 [🔝](#toc)  
 
-### Краткое содержание
+### Summary
 
-* Мы увидели, как создать привязку функции, объявление функции и функции стрелок.
+* We've seen how to create a function binding, function declaration and arrow functions.
 
 ```javascript
 
@@ -390,18 +392,19 @@ let h = a => a % 3;
 
 ```
 
-* Полезно разделить задачи, которые выполняет ваша программа, на разные функции. Вам не придется слишком много повторяться, а функции могут помочь организовать программу, группируя код на части, выполняющие определенные действия.
+* Separating the tasks your program performs in to different functions is helpful. You wont' have to repeat yourself as much, and functions can help organize a program by grouping code into pieces that do specific things.
 
 
   
 [🔝](#toc)  
 
 
-### Упражнения
+### Exercises
 
+:canada:  
 
-1. **Минимум**
-На прошлом уроке мы представили стандартную функцию `Math.min`, которая возвращает наименьший аргумент. Сейчас мы можем построить что-то подобное. Напишите функцию min, которая принимает два аргумента и возвращает их минимум.
+1. **Minimum**
+Last lesson we introduced the standard function `Math.min` that returns its smallest argument. We can build something like that now. Write a function min that takes two arguments and returns their minimum.
 
 ```javascript
 // Your code here.
@@ -413,16 +416,16 @@ console.log(min(0, -10));
 ```
 
 
-2. **Рекурсия**
-Мы видели, что % (оператор остатка) можно использовать для проверки того, является ли число четным или нечетным, используя % 2, чтобы проверить, делится ли оно на два. Вот еще один способ определить, является ли положительное целое число четным или нечетным:
+2. **Recursion**  
+We’ve seen that % (the remainder operator) can be used to test whether a number is even or odd by using % 2 to see whether it’s divisible by two. Here’s another way to define whether a positive whole number is even or odd:
 
-* Ноль четный.
-* Один странный.
-* Для любого другого числа N его четность такая же, как N - 2.
+* Zero is even.
+* One is odd.
+* For any other number N, its evenness is the same as N - 2.
 
-Определите рекурсивную функцию isEven, соответствующую этому описанию. Функция должна принимать один параметр (положительное целое число) и возвращать логическое значение.
+Define a recursive function `isEven` corresponding to this description. The function should accept a single parameter (a positive, whole number) and return a Boolean.
 
-Проверьте его на 50 и 75. Посмотрите, как он поведет себя на -1. Почему? Можете ли вы придумать, как это исправить?
+Test it on 50 and 75. See how it behaves on -1. Why? Can you think of a way to fix this?
 
 ```javascript
 // Your code here.
@@ -435,12 +438,12 @@ console.log(isEven(-1));
 // → ??
 ```
 
-3. **Подсчет зерен**
-Вы можете получить N-й символ или букву из строки, написав `"string"[N]`. Возвращаемое значение будет строкой, содержащей только один символ (например, «b»). Первый символ имеет позицию 0, поэтому последний находится в позиции `string.length - 1`. Другими словами, двухсимвольная строка имеет длину 2, а ее символы имеют позиции 0 и 1.
+3. **Bean counting**
+You can get the Nth character, or letter, from a string by writing `"string"[N]`. The returned value will be a string containing only one character (for example, "b"). The first character has position 0, which causes the last one to be found at position `string.length - 1`. In other words, a two-character string has length 2, and its characters have positions 0 and 1.
 
-Напишите функцию countBs, которая принимает строку в качестве единственного аргумента и возвращает число, указывающее, сколько символов «B» в верхнем регистре содержится в строке.
+Write a function countBs that takes a string as its only argument and returns a number that indicates how many uppercase “B” characters there are in the string.
 
-Затем напишите функцию countChar, которая ведет себя как `countBs`, за исключением того, что она принимает второй аргумент, указывающий символ, который необходимо подсчитать (вместо того, чтобы считать только символы `B` в верхнем регистре). Перепишите countBs, чтобы использовать эту новую функцию.
+Next, write a function called countChar that behaves like `countBs`, except it takes a second argument that indicates the character that is to be counted (rather than counting only uppercase “B” characters). Rewrite countBs to make use of this new function.
 
 ```javacript
 // Your code here.
